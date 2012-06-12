@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Mobio Oy. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
+#import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
 int main(int argc, char *argv[])

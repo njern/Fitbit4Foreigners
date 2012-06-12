@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FitbitAuthorization.h"
+
+static NSString *USER_AUTHORIZED_APP_NOTIFICATION = @"UserDidAuthorizeFitbitInWebView";
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, assign) FitbitAuthorization *fitbitAuthorization;
 
 @end

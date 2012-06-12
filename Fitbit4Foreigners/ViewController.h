@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FitbitAuthorization.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <FitbitAuthorizationDelegate>
+
+@property (retain, nonatomic) IBOutlet UIButton *getStartedButton;
+@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *gettingStartedSpinner;
+
+- (IBAction)getStartedButtonPressed:(UIButton *)sender;
 
 @end

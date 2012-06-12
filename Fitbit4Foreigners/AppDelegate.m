@@ -11,6 +11,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize fitbitAuthorization;
 
 - (void)dealloc
 {
@@ -21,6 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
     return YES;
 }
 							
@@ -49,6 +51,32 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    /**
+     * This method is called when the app is opened by Safari
+     * after the user has accepted our oAuth request on the
+     * Fitbit website.
+     *
+     * We pass the oAuthVerifier contained in the URL back to the FitbitAuthorization object.
+     */
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@", [url absoluteURL]];
+    NSArray *components = [urlString componentsSeparatedByString:@"oauth_verifier="];
+    
+    NSString *oAuthVerifier = [components lastObject];
+    
+    if(self->fitbitAuthorization) {
+        if(self->fitbitAuthorization.delegate) {
+            
+            if(self->fitbitAuthorization.unAuthorizedoAuthToken != nil && self->fitbitAuthorization.oAuthToken == nil) {
+                [self->fitbitAuthorization fetchAuthorizedOpenAuthTokenWithVerifier:oAuthVerifier];
+            }
+        }
+    }
+    
+    return YES;  
 }
 
 @end
