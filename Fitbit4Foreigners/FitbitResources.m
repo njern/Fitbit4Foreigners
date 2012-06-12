@@ -46,7 +46,6 @@
 
 - (void) fetchDevices {
     
-    NSLog(@"Fetching test data...");
     NSURL *url = [NSURL URLWithString:@"http://api.fitbit.com/1/user/-/devices.json"];
     OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
                                                      secret:CONSUMER_SECRET] autorelease];
@@ -96,6 +95,68 @@
     }    
 }
 
+
+
+// MY ACTIVITIES
+
+- (void) fetchMyActivitiesForDate: (NSDate *) date {
+    // GET /1/user/-/activities/date/2010-02-21.json
+    
+    NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *dateString =  [dateFormat stringFromDate:date];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://api.fitbit.com/1/user/-/activities/date/%@.json", dateString];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
+                                                     secret:CONSUMER_SECRET] autorelease];
+    
+    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
+                                                                    consumer:consumer
+                                                                       token:self.authorization.oAuthToken
+                                                                       realm:nil
+                                                           signatureProvider:nil]
+                                    autorelease];
+    
+    OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
+    
+    [fetcher fetchDataWithRequest:request
+                         delegate:self
+                didFinishSelector:@selector(activitiesRequestWithTicket:didFinishWithData:)
+                  didFailSelector:@selector(activitiesRequestWithTicket:didFailWithError:)];
+}
+
+- (void)activitiesRequestWithTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    
+    
+    if (ticket.didSucceed) {
+        NSString *responseBody = [[[NSString alloc] initWithData:data
+                                                        encoding:NSUTF8StringEncoding] autorelease];
+        
+        id jsonResult = [responseBody JSONValue];
+        
+        if(jsonResult && [jsonResult isKindOfClass:[NSDictionary class]]) {
+            if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToActivitiesQuery:)]) {
+                [self.delegate gotResponseToActivitiesQuery:jsonResult];
+            }
+        }
+        
+        else {
+            NSLog(@"Invalid data format for GET: Devices request.");
+        }
+    }
+}
+
+- (void)activitiesRequestWithTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
+    
+    if(self.delegate) {
+        if([self.delegate respondsToSelector:@selector(activitiesQueryFailedWithError::)]) {
+            [self.delegate activitiesQueryFailedWithError: error];
+        }
+    }    
+}
 
 
 
