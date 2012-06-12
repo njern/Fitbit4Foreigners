@@ -8,7 +8,7 @@
 
 #import "FitbitResources.h"
 #import "FitbitAuthorization.h"
-
+#import "SBJson.h"
 @interface FitbitResources()
 
 @property (nonatomic, retain) FitbitAuthorization *authorization;
@@ -18,6 +18,7 @@
 
 @implementation FitbitResources
 @synthesize  authorization;
+@synthesize delegate;
 
 - (void) dealloc {
  
@@ -38,6 +39,64 @@
 - (id) init {
     return nil;
 }
+
+
+
+// DEVICES
+
+- (void) fetchDevices {
+    
+    NSLog(@"Fetching test data...");
+    NSURL *url = [NSURL URLWithString:@"http://api.fitbit.com/1/user/-/devices.json"];
+    OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
+                                                     secret:CONSUMER_SECRET] autorelease];
+    
+    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
+                                                                    consumer:consumer
+                                                                       token:self.authorization.oAuthToken
+                                                                       realm:nil
+                                                           signatureProvider:nil]
+                                    autorelease];
+    
+    OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
+    
+    [fetcher fetchDataWithRequest:request
+                         delegate:self
+                didFinishSelector:@selector(devicesRequestWithTicket:didFinishWithData:)
+                  didFailSelector:@selector(devicesRequestWithTicket:didFailWithError:)];
+}
+
+- (void)devicesRequestWithTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    
+    
+    if (ticket.didSucceed) {
+        NSString *responseBody = [[[NSString alloc] initWithData:data
+                                                        encoding:NSUTF8StringEncoding] autorelease];
+    
+        id jsonResult = [responseBody JSONValue];
+        
+        if(jsonResult && [jsonResult isKindOfClass:[NSArray class]]) {
+            if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToDevicesQuery:)]) {
+                [self.delegate gotResponseToDevicesQuery:jsonResult];
+            }
+        }
+        
+        else {
+            NSLog(@"Invalid data format for GET: Devices request.");
+        }
+    }
+}
+
+- (void)devicesRequestWithTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
+    
+    if(self.delegate) {
+        if([self.delegate respondsToSelector:@selector(devicesQueryFailedWithError:)]) {
+            [self.delegate devicesQueryFailedWithError: error];
+        }
+    }    
+}
+
+
 
 
 @end

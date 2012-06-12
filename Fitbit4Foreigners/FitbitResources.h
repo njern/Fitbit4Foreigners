@@ -22,6 +22,8 @@
 
 @interface FitbitResources : NSObject
 
+@property (nonatomic, assign) NSObject<FitbitResourcesDelegate> *delegate;
+
 - (id) initWithAuthorizationObject: (FitbitAuthorization *) _authorization;
 
 // GET methods for the Resources API

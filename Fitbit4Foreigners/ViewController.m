@@ -35,54 +35,6 @@
 }
 
 
-- (void) testTokenIsWorking {
-    
-    NSLog(@"Fetching test data...");
-    NSURL *url = [NSURL URLWithString:@"http://api.fitbit.com/1/user/-/devices.json"];
-    OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
-                                                     secret:CONSUMER_SECRET] autorelease];
-    
-    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
-                                                                   consumer:consumer
-                                                                      token:self->fitbitAuthorization.oAuthToken
-                                                                      realm:nil
-                                                          signatureProvider:nil]
-                                    autorelease];
-    
-    OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
-    
-    [fetcher fetchDataWithRequest:request
-                         delegate:self
-                didFinishSelector:@selector(apiTicket:didFinishWithData:)
-                  didFailSelector:@selector(apiTicket:didFailWithError:)];
-}
-
-- (void)apiTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
-    
-    NSString *responseBody = [[[NSString alloc] initWithData:data
-                                                    encoding:NSUTF8StringEncoding] autorelease];
-    
-    if (ticket.didSucceed) {
-        NSString *responseBody = [[[NSString alloc] initWithData:data
-                                                        encoding:NSUTF8StringEncoding] autorelease];
-    
-        NSLog(@"Response to devices query was: %@", responseBody);
-    }
-    
-    else {
-        NSLog(@"Test data ticket failed: %@", responseBody);
-    }
-}
-
-- (void)apiTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
-    
-    NSLog(@"Error response to devices query was: %@", [error localizedDescription]);
-
-}
-
-
-
-
 
 - (void)viewDidLoad
 {
@@ -103,7 +55,8 @@
     }
     
     else {
-        [self testTokenIsWorking];
+        // FETCH DATA ABOUT USER!
+    
     }
     
     
@@ -141,9 +94,11 @@
 // FitbitAuthorizationDelegate.
 
 - (void) gotAuthorizationURL: (NSURL *) url {
+
     [[UIApplication sharedApplication] openURL:url];
 }
 - (void) failedToGetAuthorizationURL: (NSError *) error {
+
     NSLog(@"Error getting oAuth authorization URL: %@", [error localizedDescription]);
 }
 
@@ -151,7 +106,6 @@
     
     NSLog(@"Successfully fetched the authorized token.");
     // DO STUFF
-    [self testTokenIsWorking];
     
 }
 - (void) failedToFetchAuthorizedToken: (NSError *) error {
