@@ -18,6 +18,12 @@
 - (void) gotResponseToActivitiesQuery: (NSDictionary *) response;
 - (void) activitiesQueryFailedWithError: (NSError *) error;
 
+- (void) gotResponseToMyUserInfoQuery: (NSDictionary *) response;
+- (void) myUserInfoQueryFailedWithError: (NSError *) error;
+
+- (void) gotResponseToBodyMeasurementsQuery: (NSDictionary *) response;
+- (void) bodyMeasurementsQueryFailedWithError: (NSError *) error;
+
 @end
 
 @interface FitbitResources : NSObject
@@ -29,6 +35,7 @@
 // GET methods for the Resources API
 - (void) fetchDevices;
 - (void) fetchMyActivitiesForDate: (NSDate *) date;
-
+- (void) fetchMyUserInfo;
+- (void) fetchBodyMeasurementsForDate: (NSDate *) date;
 
 @end

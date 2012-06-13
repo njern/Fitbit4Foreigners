@@ -128,8 +128,8 @@
     
     [request setHTTPMethod:@"POST"];
     
-    OARequestParameter *verifierParam = [[OARequestParameter alloc] initWithName:@"oauth_verifier"
-                                                                       value:oAuthVerifier];
+    OARequestParameter *verifierParam = [[[OARequestParameter alloc] initWithName:@"oauth_verifier"
+                                                                       value:oAuthVerifier] autorelease];
     NSArray *params = [NSArray arrayWithObjects:verifierParam, nil];
     [request setParameters:params];
     
