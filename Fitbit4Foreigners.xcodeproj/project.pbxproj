@@ -49,6 +49,7 @@
 		64DB5E821586778500F3E383 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E6C1586778500F3E383 /* OAToken.m */; };
 		64DB5E831586778500F3E383 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E6E1586778500F3E383 /* OATokenManager.m */; };
 		64DB5E871587501200F3E383 /* FitbitAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E861587501200F3E383 /* FitbitAuthorization.m */; };
+		64F5788B1588C6FF00E8030D /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5788A1588C6FF00E8030D /* AsyncImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,8 @@
 		64DB5E6F1586778500F3E383 /* OAuthConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthConsumer.h; sourceTree = "<group>"; };
 		64DB5E851587501200F3E383 /* FitbitAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitAuthorization.h; sourceTree = "<group>"; };
 		64DB5E861587501200F3E383 /* FitbitAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitAuthorization.m; sourceTree = "<group>"; };
+		64F578891588C6FF00E8030D /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		64F5788A1588C6FF00E8030D /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,7 @@
 		6429670715836267005689E3 /* Fitbit4Foreigners */ = {
 			isa = PBXGroup;
 			children = (
+				64F5788D1588C72A00E8030D /* Other libraries */,
 				649378F31587C0C00086ED7A /* SBJSON */,
 				64DB5E1C1586772500F3E383 /* oAuthConsumer for iOS */,
 				6429671015836267005689E3 /* AppDelegate.h */,
@@ -303,6 +307,15 @@
 			path = Crypto;
 			sourceTree = "<group>";
 		};
+		64F5788D1588C72A00E8030D /* Other libraries */ = {
+			isa = PBXGroup;
+			children = (
+				64F578891588C6FF00E8030D /* AsyncImageView.h */,
+				64F5788A1588C6FF00E8030D /* AsyncImageView.m */,
+			);
+			name = "Other libraries";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -402,6 +415,7 @@
 				649379161587C0CB0086ED7A /* SBJsonTokeniser.m in Sources */,
 				649379171587C0CB0086ED7A /* SBJsonUTF8Stream.m in Sources */,
 				649379181587C0CB0086ED7A /* SBJsonWriter.m in Sources */,
+				64F5788B1588C6FF00E8030D /* AsyncImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
