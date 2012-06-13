@@ -278,4 +278,135 @@
     }    
 }
 
+
+// BODY WEIGHT
+
+- (void) fetchBodyWeightDataFromDate: (NSDate *) fromDate untilDate: (NSDate *) endDate {
+    // GET /<api-version>/user/-/body/log/weight/date/<base-date>/<end-date>.<response-format>
+    
+    NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *fromDateString =  [dateFormat stringFromDate:fromDate];
+    NSString *endDateString =  [dateFormat stringFromDate:endDate];
+
+    NSString *urlString = [NSString stringWithFormat:@"http://api.fitbit.com/1/user/-/body/log/weight/date%@/%@.json", fromDateString, endDateString];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
+                                                     secret:CONSUMER_SECRET] autorelease];
+    
+    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
+                                                                    consumer:consumer
+                                                                       token:self.authorization.oAuthToken
+                                                                       realm:nil
+                                                           signatureProvider:nil]
+                                    autorelease];
+    
+    OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
+    
+    [fetcher fetchDataWithRequest:request
+                         delegate:self
+                didFinishSelector:@selector(bodyWeightRequestWithTicket:didFinishWithData:)
+                  didFailSelector:@selector(bodyWeightRequestWithTicket:didFailWithError:)];
+}
+
+- (void)bodyWeightRequestWithTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    
+    
+    if (ticket.didSucceed) {
+        NSString *responseBody = [[[NSString alloc] initWithData:data
+                                                        encoding:NSUTF8StringEncoding] autorelease];
+        
+        id jsonResult = [responseBody JSONValue];
+        
+        if(jsonResult && [jsonResult isKindOfClass:[NSArray class]]) {
+            if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToBodyWeightQuery:)]) {
+                [self.delegate gotResponseToBodyWeightQuery:jsonResult];
+            }
+        }
+        
+        else {
+            NSLog(@"Invalid data format for GET: BODY WEIGHT request.");
+        }
+    }
+}
+
+- (void)bodyWeightRequestWithTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
+    
+    if(self.delegate) {
+        if([self.delegate respondsToSelector:@selector(bodyWeightQueryFailedWithError:)]) {
+            [self.delegate bodyWeightQueryFailedWithError: error];
+        }
+    }    
+}
+
+
+// BODY FAT
+    
+- (void) fetchBodyFatDataFromDate: (NSDate *) fromDate untilDate: (NSDate *) endDate { 
+    // GET /<api-version>/user/-/body/log/fat/date/<base-date>/<end-date>.<response-format>
+    
+
+    NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *fromDateString =  [dateFormat stringFromDate:fromDate];
+    NSString *endDateString =  [dateFormat stringFromDate:endDate];
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://api.fitbit.com/1/user/-/fat/log/weight/date%@/%@.json", fromDateString, endDateString];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
+                                                     secret:CONSUMER_SECRET] autorelease];
+    
+    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
+                                                                    consumer:consumer
+                                                                       token:self.authorization.oAuthToken
+                                                                       realm:nil
+                                                           signatureProvider:nil]
+                                    autorelease];
+    
+    OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
+    
+    [fetcher fetchDataWithRequest:request
+                         delegate:self
+                didFinishSelector:@selector(bodyFatRequestWithTicket:didFinishWithData:)
+                  didFailSelector:@selector(bodyFatRequestWithTicket:didFailWithError:)];
+}
+
+- (void)bodyFatRequestWithTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    
+    
+    if (ticket.didSucceed) {
+        NSString *responseBody = [[[NSString alloc] initWithData:data
+                                                        encoding:NSUTF8StringEncoding] autorelease];
+        
+        id jsonResult = [responseBody JSONValue];
+        
+        if(jsonResult && [jsonResult isKindOfClass:[NSArray class]]) {
+            if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToBodyFatQuery:)]) {
+                [self.delegate gotResponseToBodyFatQuery:jsonResult];
+            }
+        }
+        
+        else {
+            NSLog(@"Invalid data format for GET: BODY FAT request.");
+        }
+    }
+}
+
+- (void)bodyFatRequestWithTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
+    
+    if(self.delegate) {
+        if([self.delegate respondsToSelector:@selector(bodyFatQueryFailedWithError:)]) {
+            [self.delegate bodyFatQueryFailedWithError: error];
+        }
+    }    
+}
+
+
+
 @end

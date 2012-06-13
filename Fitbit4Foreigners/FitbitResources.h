@@ -24,6 +24,12 @@
 - (void) gotResponseToBodyMeasurementsQuery: (NSDictionary *) response;
 - (void) bodyMeasurementsQueryFailedWithError: (NSError *) error;
 
+- (void) gotResponseToBodyWeightQuery: (NSArray *) response;
+- (void) bodyWeightQueryFailedWithError: (NSError *) error;
+
+- (void) gotResponseToBodyFatQuery: (NSArray *) response;
+- (void) bodyFatQueryFailedWithError: (NSError *) error;
+
 @end
 
 @interface FitbitResources : NSObject
@@ -37,5 +43,6 @@
 - (void) fetchMyActivitiesForDate: (NSDate *) date;
 - (void) fetchMyUserInfo;
 - (void) fetchBodyMeasurementsForDate: (NSDate *) date;
-
+- (void) fetchBodyWeightDataFromDate: (NSDate *) fromDate untilDate: (NSDate *) endDate;
+- (void) fetchBodyFatDataFromDate: (NSDate *) fromDate untilDate: (NSDate *) endDate;
 @end
