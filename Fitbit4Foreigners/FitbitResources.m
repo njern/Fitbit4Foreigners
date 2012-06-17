@@ -9,6 +9,8 @@
 #import "FitbitResources.h"
 #import "FitbitAuthorization.h"
 #import "SBJson.h"
+#import "FBUserInfo.h"
+#import "FBDevice.h"
 @interface FitbitResources()
 
 @property (nonatomic, retain) FitbitAuthorization *authorization;
@@ -75,8 +77,16 @@
         id jsonResult = [responseBody JSONValue];
         
         if(jsonResult && [jsonResult isKindOfClass:[NSArray class]]) {
+            
+            // Create FBDevice objects -> put them in deviceObjects -> pass that to delegate
+            NSMutableArray *deviceObjects = [NSMutableArray array];
+            for(NSDictionary *dictionaryDevice in jsonResult) {
+                FBDevice *device = [FBDevice deviceFromDictionary:dictionaryDevice];
+                [deviceObjects addObject:device];
+            }
+            
             if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToDevicesQuery:)]) {
-                [self.delegate gotResponseToDevicesQuery:jsonResult];
+                [self.delegate gotResponseToDevicesQuery:deviceObjects];
             }
         }
         
@@ -197,8 +207,10 @@
         id jsonResult = [responseBody JSONValue];
         
         if(jsonResult && [jsonResult isKindOfClass:[NSDictionary class]]) {
+            FBUserInfo *resultingUserInfo = [FBUserInfo createFromDictionary:jsonResult];
+            
             if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToMyUserInfoQuery:)]) {
-                [self.delegate gotResponseToMyUserInfoQuery:jsonResult];
+                [self.delegate gotResponseToMyUserInfoQuery:resultingUserInfo];
             }
         }
         

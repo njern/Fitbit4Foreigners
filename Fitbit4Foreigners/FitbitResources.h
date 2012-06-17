@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class FBUserInfo;
 @class FitbitAuthorization; // Forward declare
 
 @protocol FitbitResourcesDelegate <NSObject>
@@ -18,7 +19,7 @@
 - (void) gotResponseToActivitiesQuery: (NSDictionary *) response;
 - (void) activitiesQueryFailedWithError: (NSError *) error;
 
-- (void) gotResponseToMyUserInfoQuery: (NSDictionary *) response;
+- (void) gotResponseToMyUserInfoQuery: (FBUserInfo *) response;
 - (void) myUserInfoQueryFailedWithError: (NSError *) error;
 
 - (void) gotResponseToBodyMeasurementsQuery: (NSDictionary *) response;

@@ -16,6 +16,13 @@
 		6429671815836267005689E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6429671715836267005689E3 /* ViewController.m */; };
 		6429672D15836BC9005689E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6429672C15836BC9005689E3 /* Security.framework */; };
 		6429673315836BE2005689E3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6429673215836BE2005689E3 /* libxml2.dylib */; };
+		643A6634158E138400505E27 /* FBUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A6633158E138400505E27 /* FBUserInfo.m */; };
+		643A6637158E138F00505E27 /* FBDailyActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A6636158E138F00505E27 /* FBDailyActivity.m */; };
+		643A663A158E139800505E27 /* FBDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A6639158E139800505E27 /* FBDevice.m */; };
+		643A663D158E13A000505E27 /* FBBodyMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A663C158E13A000505E27 /* FBBodyMeasurement.m */; };
+		643A6640158E13AA00505E27 /* FBBodyWeightData.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A663F158E13AA00505E27 /* FBBodyWeightData.m */; };
+		643A6643158E13B300505E27 /* FBBodyFatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A6642158E13B300505E27 /* FBBodyFatData.m */; };
+		644229D91588D9C800FB5FEE /* main_page_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 644229D81588D9C800FB5FEE /* main_page_background.png */; };
 		649378F21587BAD30086ED7A /* FitbitResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 649378F11587BAD30086ED7A /* FitbitResources.m */; };
 		6493790D1587C0CB0086ED7A /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 649378F51587C0CB0086ED7A /* NSObject+SBJson.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		6493790E1587C0CB0086ED7A /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 649378F81587C0CB0086ED7A /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -29,6 +36,7 @@
 		649379161587C0CB0086ED7A /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 649379081587C0CB0086ED7A /* SBJsonTokeniser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		649379171587C0CB0086ED7A /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6493790A1587C0CB0086ED7A /* SBJsonUTF8Stream.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		649379181587C0CB0086ED7A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6493790C1587C0CB0086ED7A /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		64C196241588D8D60004C366 /* main_page_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C196221588D8D60004C366 /* main_page_background@2x.png */; };
 		64DB5E711586778500F3E383 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E491586778500F3E383 /* NSMutableURLRequest+Parameters.m */; };
 		64DB5E721586778500F3E383 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E4B1586778500F3E383 /* NSString+URLEncoding.m */; };
 		64DB5E731586778500F3E383 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E4D1586778500F3E383 /* NSURL+Base.m */; };
@@ -50,6 +58,8 @@
 		64DB5E831586778500F3E383 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E6E1586778500F3E383 /* OATokenManager.m */; };
 		64DB5E871587501200F3E383 /* FitbitAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E861587501200F3E383 /* FitbitAuthorization.m */; };
 		64F5788B1588C6FF00E8030D /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5788A1588C6FF00E8030D /* AsyncImageView.m */; };
+		64F5788F1588CC5400E8030D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F5788E1588CC5400E8030D /* QuartzCore.framework */; };
+		64F578911588CC8200E8030D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F578901588CC8200E8030D /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +77,20 @@
 		6429671715836267005689E3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6429672C15836BC9005689E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		6429673215836BE2005689E3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		643A6632158E138400505E27 /* FBUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBUserInfo.h; sourceTree = "<group>"; };
+		643A6633158E138400505E27 /* FBUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBUserInfo.m; sourceTree = "<group>"; };
+		643A6635158E138F00505E27 /* FBDailyActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDailyActivity.h; sourceTree = "<group>"; };
+		643A6636158E138F00505E27 /* FBDailyActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBDailyActivity.m; sourceTree = "<group>"; };
+		643A6638158E139800505E27 /* FBDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDevice.h; sourceTree = "<group>"; };
+		643A6639158E139800505E27 /* FBDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBDevice.m; sourceTree = "<group>"; };
+		643A663B158E13A000505E27 /* FBBodyMeasurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBodyMeasurement.h; sourceTree = "<group>"; };
+		643A663C158E13A000505E27 /* FBBodyMeasurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBodyMeasurement.m; sourceTree = "<group>"; };
+		643A663E158E13AA00505E27 /* FBBodyWeightData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBodyWeightData.h; sourceTree = "<group>"; };
+		643A663F158E13AA00505E27 /* FBBodyWeightData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBodyWeightData.m; sourceTree = "<group>"; };
+		643A6641158E13B300505E27 /* FBBodyFatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBodyFatData.h; sourceTree = "<group>"; };
+		643A6642158E13B300505E27 /* FBBodyFatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBodyFatData.m; sourceTree = "<group>"; };
+		643A6644158E14A400505E27 /* FBConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBConstants.h; sourceTree = "<group>"; };
+		644229D81588D9C800FB5FEE /* main_page_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_page_background.png; sourceTree = "<group>"; };
 		649378F01587BAD30086ED7A /* FitbitResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitResources.h; sourceTree = "<group>"; };
 		649378F11587BAD30086ED7A /* FitbitResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitResources.m; sourceTree = "<group>"; };
 		649378F41587C0CB0086ED7A /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -94,6 +118,7 @@
 		6493790A1587C0CB0086ED7A /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		6493790B1587C0CB0086ED7A /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		6493790C1587C0CB0086ED7A /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		64C196221588D8D60004C366 /* main_page_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_page_background@2x.png"; sourceTree = "<group>"; };
 		64DB5E481586778500F3E383 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
 		64DB5E491586778500F3E383 /* NSMutableURLRequest+Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Parameters.m"; sourceTree = "<group>"; };
 		64DB5E4A1586778500F3E383 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -137,6 +162,8 @@
 		64DB5E861587501200F3E383 /* FitbitAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitAuthorization.m; sourceTree = "<group>"; };
 		64F578891588C6FF00E8030D /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		64F5788A1588C6FF00E8030D /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		64F5788E1588CC5400E8030D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		64F578901588CC8200E8030D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +171,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F578911588CC8200E8030D /* CoreGraphics.framework in Frameworks */,
+				64F5788F1588CC5400E8030D /* QuartzCore.framework in Frameworks */,
 				6429673315836BE2005689E3 /* libxml2.dylib in Frameworks */,
 				6429672D15836BC9005689E3 /* Security.framework in Frameworks */,
 				6429670215836267005689E3 /* UIKit.framework in Frameworks */,
@@ -157,6 +186,8 @@
 		642966F215836267005689E3 = {
 			isa = PBXGroup;
 			children = (
+				64F578901588CC8200E8030D /* CoreGraphics.framework */,
+				64F5788E1588CC5400E8030D /* QuartzCore.framework */,
 				6429670715836267005689E3 /* Fitbit4Foreigners */,
 				6429670015836267005689E3 /* Frameworks */,
 				642966FE15836267005689E3 /* Products */,
@@ -185,6 +216,7 @@
 		6429670715836267005689E3 /* Fitbit4Foreigners */ = {
 			isa = PBXGroup;
 			children = (
+				643A6630158E136C00505E27 /* Data models (Fitbit) */,
 				64F5788D1588C72A00E8030D /* Other libraries */,
 				649378F31587C0C00086ED7A /* SBJSON */,
 				64DB5E1C1586772500F3E383 /* oAuthConsumer for iOS */,
@@ -209,8 +241,30 @@
 				6429670A15836267005689E3 /* InfoPlist.strings */,
 				6429670D15836267005689E3 /* main.m */,
 				6429670F15836267005689E3 /* Fitbit4Foreigners-Prefix.pch */,
+				64C196221588D8D60004C366 /* main_page_background@2x.png */,
+				644229D81588D9C800FB5FEE /* main_page_background.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		643A6630158E136C00505E27 /* Data models (Fitbit) */ = {
+			isa = PBXGroup;
+			children = (
+				643A6644158E14A400505E27 /* FBConstants.h */,
+				643A6632158E138400505E27 /* FBUserInfo.h */,
+				643A6633158E138400505E27 /* FBUserInfo.m */,
+				643A6635158E138F00505E27 /* FBDailyActivity.h */,
+				643A6636158E138F00505E27 /* FBDailyActivity.m */,
+				643A6638158E139800505E27 /* FBDevice.h */,
+				643A6639158E139800505E27 /* FBDevice.m */,
+				643A663B158E13A000505E27 /* FBBodyMeasurement.h */,
+				643A663C158E13A000505E27 /* FBBodyMeasurement.m */,
+				643A663E158E13AA00505E27 /* FBBodyWeightData.h */,
+				643A663F158E13AA00505E27 /* FBBodyWeightData.m */,
+				643A6641158E13B300505E27 /* FBBodyFatData.h */,
+				643A6642158E13B300505E27 /* FBBodyFatData.m */,
+			);
+			name = "Data models (Fitbit)";
 			sourceTree = "<group>";
 		};
 		649378F31587C0C00086ED7A /* SBJSON */ = {
@@ -370,6 +424,8 @@
 				6429670C15836267005689E3 /* InfoPlist.strings in Resources */,
 				6429671515836267005689E3 /* MainStoryboard.storyboard in Resources */,
 				64DB5E811586778500F3E383 /* OATestServer.rb in Resources */,
+				64C196241588D8D60004C366 /* main_page_background@2x.png in Resources */,
+				644229D91588D9C800FB5FEE /* main_page_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +472,12 @@
 				649379171587C0CB0086ED7A /* SBJsonUTF8Stream.m in Sources */,
 				649379181587C0CB0086ED7A /* SBJsonWriter.m in Sources */,
 				64F5788B1588C6FF00E8030D /* AsyncImageView.m in Sources */,
+				643A6634158E138400505E27 /* FBUserInfo.m in Sources */,
+				643A6637158E138F00505E27 /* FBDailyActivity.m in Sources */,
+				643A663A158E139800505E27 /* FBDevice.m in Sources */,
+				643A663D158E13A000505E27 /* FBBodyMeasurement.m in Sources */,
+				643A6640158E13AA00505E27 /* FBBodyWeightData.m in Sources */,
+				643A6643158E13B300505E27 /* FBBodyFatData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,16 +10,24 @@
 #import "ViewController.h"
 #import "OAuthConsumer.h"
 #import "AppDelegate.h"
+#import "AsyncImageView.h"
+#import "FBUserInfo.h"
+
 
 @interface ViewController ()
 
 @property (nonatomic, retain) FitbitAuthorization *fitbitAuthorization;
-
+@property (nonatomic, retain) FitbitResources *fitbitResources;
 @end
 
 @implementation ViewController
+
 @synthesize getStartedButton;
 @synthesize gettingStartedSpinner;
+@synthesize userInterfaceContainerView;
+@synthesize profileImageView;
+@synthesize profileNameLabel;
+@synthesize fitbitResources;
 
 @synthesize fitbitAuthorization;
 
@@ -28,9 +36,13 @@
 
     
     self.fitbitAuthorization = nil;
+    self.fitbitResources = nil;
     
     [getStartedButton release];
     [gettingStartedSpinner release];
+    [profileImageView release];
+    [profileNameLabel release];
+    [userInterfaceContainerView release];
     [super dealloc];
 }
 
@@ -48,6 +60,8 @@
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     delegate.fitbitAuthorization = self->fitbitAuthorization;
     
+    self.fitbitResources = [[[FitbitResources alloc] initWithAuthorizationObject:self.fitbitAuthorization] autorelease];
+    self.fitbitResources.delegate = self;
     
     if(self.fitbitAuthorization.isAuthorized == NO) {
         self.getStartedButton.hidden = NO;
@@ -55,6 +69,10 @@
     }
     
     else {
+        self.userInterfaceContainerView.hidden = NO;
+        
+        [self.fitbitResources fetchMyUserInfo];
+        [self.fitbitResources fetchDevices];
         // FETCH DATA ABOUT USER!
     
     }
@@ -68,6 +86,9 @@
 {
     [self setGetStartedButton:nil];
     [self setGettingStartedSpinner:nil];
+    [self setProfileImageView:nil];
+    [self setProfileNameLabel:nil];
+    [self setUserInterfaceContainerView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -112,6 +133,56 @@
     NSLog(@"Error getting authorized oAuth token: %@", [error localizedDescription]);
 }
 
+
+
+// FitbitResourcesDelegate
+
+- (void) gotResponseToDevicesQuery: (NSArray *) devices {
+    NSLog(@"Device: %@", [devices lastObject]);
+}
+- (void) devicesQueryFailedWithError: (NSError *) error {
+    
+}
+
+- (void) gotResponseToActivitiesQuery: (NSDictionary *) response {
+    
+}
+- (void) activitiesQueryFailedWithError: (NSError *) error {
+    
+}
+
+- (void) gotResponseToMyUserInfoQuery: (FBUserInfo *) response {
+    // - (void)loadImageWithURL:(NSURL *)URL;
+    
+    self.profileImageView.imageURL = response.avatarURL;
+    self.profileNameLabel.text = response.fullName;
+    
+}
+- (void) myUserInfoQueryFailedWithError: (NSError *) error {
+    NSLog(@"%@", error);
+    
+}
+
+- (void) gotResponseToBodyMeasurementsQuery: (NSDictionary *) response {
+    
+}
+- (void) bodyMeasurementsQueryFailedWithError: (NSError *) error {
+    
+}
+
+- (void) gotResponseToBodyWeightQuery: (NSArray *) response {
+    
+}
+- (void) bodyWeightQueryFailedWithError: (NSError *) error {
+    
+}
+
+- (void) gotResponseToBodyFatQuery: (NSArray *) response {
+    
+}
+- (void) bodyFatQueryFailedWithError: (NSError *) error {
+    
+}
 
 
 
