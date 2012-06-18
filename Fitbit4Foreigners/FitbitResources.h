@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class FBUserInfo;
+@class FBActivityStats;
 @class FitbitAuthorization; // Forward declare
 
 @protocol FitbitResourcesDelegate <NSObject>
@@ -31,6 +32,9 @@
 - (void) gotResponseToBodyFatQuery: (NSArray *) response;
 - (void) bodyFatQueryFailedWithError: (NSError *) error;
 
+- (void) gotResponseToActivityStatsQuery: (FBActivityStats *) response;
+- (void) activityStatsQueryFailedWithError: (NSError *) error;
+
 @end
 
 @interface FitbitResources : NSObject
@@ -46,4 +50,7 @@
 - (void) fetchBodyMeasurementsForDate: (NSDate *) date;
 - (void) fetchBodyWeightDataFromDate: (NSDate *) fromDate untilDate: (NSDate *) endDate;
 - (void) fetchBodyFatDataFromDate: (NSDate *) fromDate untilDate: (NSDate *) endDate;
+- (void) fetchActivityStats;
+
+
 @end

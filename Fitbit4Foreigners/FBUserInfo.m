@@ -93,7 +93,6 @@
     userInfo.waterUnit = distanceUnitFromString([user objectForKey:@"waterUnit"]) ;
     userInfo.glucoseUnit = distanceUnitFromString([user objectForKey:@"glucoseUnit"]) ;
 
-    
     return [userInfo autorelease];
 }
 

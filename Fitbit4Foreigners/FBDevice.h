@@ -10,12 +10,10 @@
 
 @interface FBDevice : NSObject
 
-
 @property (nonatomic, retain) NSString *batteryLevel; 
 @property (nonatomic, retain) NSNumber *uniqueID; 
 @property (nonatomic, retain) NSDate *lastSyncTime; 
 @property (nonatomic, retain) NSString *deviceType; 
-
 
 + (FBDevice *) deviceFromDictionary: (NSDictionary *) dictionary;
 

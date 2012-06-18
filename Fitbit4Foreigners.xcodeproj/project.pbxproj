@@ -22,6 +22,7 @@
 		643A663D158E13A000505E27 /* FBBodyMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A663C158E13A000505E27 /* FBBodyMeasurement.m */; };
 		643A6640158E13AA00505E27 /* FBBodyWeightData.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A663F158E13AA00505E27 /* FBBodyWeightData.m */; };
 		643A6643158E13B300505E27 /* FBBodyFatData.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A6642158E13B300505E27 /* FBBodyFatData.m */; };
+		643A6647158F036400505E27 /* FBActivityStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 643A6646158F036300505E27 /* FBActivityStats.m */; };
 		644229D91588D9C800FB5FEE /* main_page_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 644229D81588D9C800FB5FEE /* main_page_background.png */; };
 		649378F21587BAD30086ED7A /* FitbitResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 649378F11587BAD30086ED7A /* FitbitResources.m */; };
 		6493790D1587C0CB0086ED7A /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 649378F51587C0CB0086ED7A /* NSObject+SBJson.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -90,6 +91,8 @@
 		643A6641158E13B300505E27 /* FBBodyFatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBodyFatData.h; sourceTree = "<group>"; };
 		643A6642158E13B300505E27 /* FBBodyFatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBodyFatData.m; sourceTree = "<group>"; };
 		643A6644158E14A400505E27 /* FBConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FBConstants.h; sourceTree = "<group>"; };
+		643A6645158F036300505E27 /* FBActivityStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBActivityStats.h; sourceTree = "<group>"; };
+		643A6646158F036300505E27 /* FBActivityStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBActivityStats.m; sourceTree = "<group>"; };
 		644229D81588D9C800FB5FEE /* main_page_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_page_background.png; sourceTree = "<group>"; };
 		649378F01587BAD30086ED7A /* FitbitResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitResources.h; sourceTree = "<group>"; };
 		649378F11587BAD30086ED7A /* FitbitResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitResources.m; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				643A6633158E138400505E27 /* FBUserInfo.m */,
 				643A6635158E138F00505E27 /* FBDailyActivity.h */,
 				643A6636158E138F00505E27 /* FBDailyActivity.m */,
+				643A6645158F036300505E27 /* FBActivityStats.h */,
+				643A6646158F036300505E27 /* FBActivityStats.m */,
 				643A6638158E139800505E27 /* FBDevice.h */,
 				643A6639158E139800505E27 /* FBDevice.m */,
 				643A663B158E13A000505E27 /* FBBodyMeasurement.h */,
@@ -478,6 +483,7 @@
 				643A663D158E13A000505E27 /* FBBodyMeasurement.m in Sources */,
 				643A6640158E13AA00505E27 /* FBBodyWeightData.m in Sources */,
 				643A6643158E13B300505E27 /* FBBodyFatData.m in Sources */,
+				643A6647158F036400505E27 /* FBActivityStats.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

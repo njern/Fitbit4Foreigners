@@ -10,4 +10,8 @@
 
 @interface FBDailyActivity : NSObject
 
+
+
+
+
 @end

@@ -420,5 +420,57 @@
 }
 
 
+- (void) fetchActivityStats {
+    
+    NSURL *url = [NSURL URLWithString:@"http://api.fitbit.com/1/user/-/activities.json"];
+    OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
+                                                     secret:CONSUMER_SECRET] autorelease];
+    
+    OAMutableURLRequest *request = [[[OAMutableURLRequest alloc] initWithURL:url
+                                                                    consumer:consumer
+                                                                       token:self.authorization.oAuthToken
+                                                                       realm:nil
+                                                           signatureProvider:nil]
+                                    autorelease];
+    
+    OADataFetcher *fetcher = [[[OADataFetcher alloc] init] autorelease];
+    
+    [fetcher fetchDataWithRequest:request
+                         delegate:self
+                didFinishSelector:@selector(activityStatsRequestWithTicket:didFinishWithData:)
+                  didFailSelector:@selector(activityStatsRequestWithTicket:didFailWithError:)];
+    
+}
+
+- (void)activityStatsRequestWithTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    
+    
+    if (ticket.didSucceed) {
+        NSString *responseBody = [[[NSString alloc] initWithData:data
+                                                        encoding:NSUTF8StringEncoding] autorelease];
+        
+        id jsonResult = [responseBody JSONValue];
+        
+        if(jsonResult && [jsonResult isKindOfClass:[NSDictionary class]]) {
+            if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToActivityStatsQuery:)]) {
+                [self.delegate gotResponseToActivityStatsQuery:jsonResult];
+            }
+        }
+        
+        else {
+            NSLog(@"Invalid data format for GET: ACTIVITY STATS request.");
+        }
+    }
+}
+
+- (void)activityStatsRequestWithTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
+    
+    if(self.delegate) {
+        if([self.delegate respondsToSelector:@selector(activityStatsQueryFailedWithError:)]) {
+            [self.delegate activityStatsQueryFailedWithError: error];
+        }
+    }    
+}
+
 
 @end

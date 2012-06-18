@@ -22,8 +22,12 @@
 }
 
 + (FBDevice *) deviceFromDictionary: (NSDictionary *) dictionary {
-    
-    NSLog(@"Date to parse = %@", [dictionary objectForKey:@"lastSyncTime"]);
+        
+    /**
+     * Date is in format: 2012-06-16T18:15:47.000
+     *
+     * Not completely sure about the trailing ".000" so parsing that as literals.
+     */
     
     NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'.000'"];
@@ -34,7 +38,6 @@
     device.uniqueID = [dictionary objectForKey:@"id"];
     device.lastSyncTime = [dateFormatter dateFromString: [dictionary objectForKey:@"lastSyncTime"]];
     device.deviceType = [dictionary objectForKey:@"type"];
-    
     
     return [device autorelease];
 }
