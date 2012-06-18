@@ -10,4 +10,11 @@
 
 @interface FBBodyFatData : NSObject
 
+
+@property (nonatomic, retain) NSNumber *fat;
+@property (nonatomic, retain) NSDate *dateTime;
+@property (nonatomic, retain) NSNumber *logIdentifer;
+
++ (FBBodyFatData *) bodyFatFromDictionary: (NSDictionary *) dictionary;
+
 @end

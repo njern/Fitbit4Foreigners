@@ -32,8 +32,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd_HH:mm:ss"];
 
     FBBodyWeightData *bodyWeightData = [[FBBodyWeightData alloc] init];
-
-    
+ 
     NSString *newDateString = [NSString stringWithFormat:@"%@_%@", [dictionary objectForKey:@"date"], [dictionary objectForKey:@"time"]];
     bodyWeightData.dateTime = [dateFormatter dateFromString:newDateString];
     bodyWeightData.BMI = [dictionary objectForKey:@"bmi"];
