@@ -12,23 +12,27 @@
 #import "FBUserInfo.h"
 #import "FBDevice.h"
 #import "FBActivityStats.h"
-
+#import "FBDailyActivity.h"
+#import "FBBodyMeasurement.h"
+#import "FBBodyWeightData.h"
+#import "FBBodyFatData.h"
 
 @interface FitbitResources()
 
+@property (nonatomic, retain) NSMutableDictionary *datesForDailyActivities;
 @property (nonatomic, retain) FitbitAuthorization *authorization;
 
 @end
 
 
 @implementation FitbitResources
-@synthesize  authorization;
+@synthesize  authorization, datesForDailyActivities;
 @synthesize delegate;
 
 - (void) dealloc {
  
     self.authorization = nil;
-    
+    self.datesForDailyActivities = nil;
     [super dealloc];
 }
 
@@ -36,6 +40,8 @@
     
     if(self == [super init]) {
         self.authorization = _authorization;
+        self.datesForDailyActivities = [NSMutableDictionary dictionary];
+    
     }
     
     return self;
@@ -122,6 +128,8 @@
     
     NSString *urlString = [NSString stringWithFormat:@"http://api.fitbit.com/1/user/-/activities/date/%@.json", dateString];
     
+    [self.datesForDailyActivities setObject:date forKey:urlString];
+    
     NSURL *url = [NSURL URLWithString:urlString];
     OAConsumer *consumer = [[[OAConsumer alloc] initWithKey:CONSUMER_KEY
                                                      secret:CONSUMER_SECRET] autorelease];
@@ -152,7 +160,11 @@
         
         if(jsonResult && [jsonResult isKindOfClass:[NSDictionary class]]) {
             if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToActivitiesQuery:)]) {
-                [self.delegate gotResponseToActivitiesQuery:jsonResult];
+                
+                NSDate *dateForDailyActivity = [self.datesForDailyActivities objectForKey: [NSString stringWithFormat:@"%@", ticket.request.URL]]; // Get the date using the URL 
+                FBDailyActivity *dailyActivity = [FBDailyActivity dailyActivityForDictionary: jsonResult forDate:dateForDailyActivity];
+                
+                [self.delegate gotResponseToActivitiesQuery:dailyActivity];
             }
         }
         
@@ -274,7 +286,10 @@
         
         if(jsonResult && [jsonResult isKindOfClass:[NSDictionary class]]) {
             if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToBodyMeasurementsQuery:)]) {
-                [self.delegate gotResponseToBodyMeasurementsQuery:jsonResult];
+                
+                FBBodyMeasurement *bodyMeasurement = [FBBodyMeasurement bodyMeasurementsFromDictionary:jsonResult];
+                
+                [self.delegate gotResponseToBodyMeasurementsQuery:bodyMeasurement];
             }
         }
         
@@ -336,9 +351,22 @@
         
         id jsonResult = [responseBody JSONValue];
         
+        if([jsonResult isKindOfClass:[NSDictionary class]]) {
+            jsonResult = [jsonResult objectForKey: @"weight"];
+        }
+        
         if(jsonResult && [jsonResult isKindOfClass:[NSArray class]]) {
             if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToBodyWeightQuery:)]) {
-                [self.delegate gotResponseToBodyWeightQuery:jsonResult];
+                
+                NSMutableArray *arrayOfBodyWeightObjects = [NSMutableArray array];
+                
+                for(NSDictionary *weightMeasurement in jsonResult) {
+                    FBBodyWeightData *bodyWeightData = [FBBodyWeightData bodyWeightDataFromDictionary:weightMeasurement];
+                    [arrayOfBodyWeightObjects addObject:bodyWeightData];
+                }
+                
+                
+                [self.delegate gotResponseToBodyWeightQuery:arrayOfBodyWeightObjects];
             }
         }
         
@@ -400,10 +428,22 @@
                                                         encoding:NSUTF8StringEncoding] autorelease];
         
         id jsonResult = [responseBody JSONValue];
+        if([jsonResult isKindOfClass:[NSDictionary class]]) {
+            jsonResult = [jsonResult objectForKey:@"fat"];
+        }
         
         if(jsonResult && [jsonResult isKindOfClass:[NSArray class]]) {
             if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToBodyFatQuery:)]) {
-                [self.delegate gotResponseToBodyFatQuery:jsonResult];
+                
+                NSMutableArray *arrayOfBodyFatObjects = [NSMutableArray array];
+                
+                for(NSDictionary *fatMeasurement in jsonResult) {
+                    FBBodyFatData *bodyFatData = [FBBodyFatData bodyFatFromDictionary:fatMeasurement];
+                    [arrayOfBodyFatObjects addObject:bodyFatData];
+                }
+
+                
+                [self.delegate gotResponseToBodyFatQuery:arrayOfBodyFatObjects];
             }
         }
         

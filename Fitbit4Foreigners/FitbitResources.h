@@ -10,6 +10,8 @@
 
 @class FBUserInfo;
 @class FBActivityStats;
+@class FBDailyActivity;
+@class FBBodyMeasurement;
 @class FitbitAuthorization; // Forward declare
 
 @protocol FitbitResourcesDelegate <NSObject>
@@ -17,13 +19,13 @@
 - (void) gotResponseToDevicesQuery: (NSArray *) devices;
 - (void) devicesQueryFailedWithError: (NSError *) error;
 
-- (void) gotResponseToActivitiesQuery: (NSDictionary *) response;
+- (void) gotResponseToActivitiesQuery: (FBDailyActivity *) response;
 - (void) activitiesQueryFailedWithError: (NSError *) error;
 
 - (void) gotResponseToMyUserInfoQuery: (FBUserInfo *) response;
 - (void) myUserInfoQueryFailedWithError: (NSError *) error;
 
-- (void) gotResponseToBodyMeasurementsQuery: (NSDictionary *) response;
+- (void) gotResponseToBodyMeasurementsQuery: (FBBodyMeasurement *) response;
 - (void) bodyMeasurementsQueryFailedWithError: (NSError *) error;
 
 - (void) gotResponseToBodyWeightQuery: (NSArray *) response;

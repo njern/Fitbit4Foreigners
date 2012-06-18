@@ -144,7 +144,7 @@
     
 }
 
-- (void) gotResponseToActivitiesQuery: (NSDictionary *) response {
+- (void) gotResponseToActivitiesQuery: (FBDailyActivity *) response {
     
 }
 - (void) activitiesQueryFailedWithError: (NSError *) error {
@@ -162,7 +162,7 @@
     
 }
 
-- (void) gotResponseToBodyMeasurementsQuery: (NSDictionary *) response {
+- (void) gotResponseToBodyMeasurementsQuery: (FBBodyMeasurement *) response {
     
 }
 - (void) bodyMeasurementsQueryFailedWithError: (NSError *) error {
