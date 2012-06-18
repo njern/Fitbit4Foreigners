@@ -10,4 +10,12 @@
 
 @interface FBBodyWeightData : NSObject
 
+
+@property (nonatomic, retain) NSNumber *BMI;
+@property (nonatomic, retain) NSDate *dateTime;
+@property (nonatomic, retain) NSNumber *logIdentifer;
+@property (nonatomic, retain) NSNumber *weight;
+
++ (FBBodyWeightData *) bodyWeightDataFromDictionary: (NSDictionary *) dictionary; 
+
 @end
