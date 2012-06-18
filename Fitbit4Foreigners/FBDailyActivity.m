@@ -7,62 +7,111 @@
 //
 
 #import "FBDailyActivity.h"
-
+#import "FBActivity.h"
 @implementation FBDailyActivity
 
+@synthesize activities;
 
+@synthesize goalActiveScore;
+@synthesize goalCaloriesOut;
+@synthesize goalDistance;
+@synthesize goalFloors;
+@synthesize goalSteps;
 
+@synthesize activeScore;
+@synthesize caloriesOut;
+@synthesize distance;
+@synthesize floors;
+@synthesize steps;
 
+@synthesize distances;
 
-/*
-{
-    "activities":[
-                  {
-                      "activityId":51007,
-                      "activityParentId":90019,
-                      "calories":230,
-                      "description":"7mph",
-                      "distance":2.04,
-                      "duration":1097053,
-                      "hasStartTime":true,
-                      "isFavorite":true,
-                      "logId":1154701,
-                      "name":"Treadmill, 0% Incline",
-                      "startTime":"00:25",
-                      "steps":3783
-                  }
-                  ],
-    "goals":{
-        "activeScore":1000,
-        "caloriesOut":2826,
-        "distance":8.05,
-        "floors":150,
-        "steps":10000
-    },
-    "summary":{
-        "activeScore":2,
-        "activityCalories":230,
-        "caloriesOut":1343,
-        "distances":[
-                     {"activity":"tracker", "distance":1.32},
-                     {"activity":"loggedActivities", "distance":0},
-                     {"activity":"total","distance":1.32},
-                     {"activity":"veryActive", "distance":0.51},
-                     {"activity":"moderatelyActive", "distance":0.51},
-                     {"activity":"lightlyActive", "distance":0.51},
-                     {"activity":"sedentaryActive", "distance":0.51},
-                     {"activity":"Treadmill, 0% Incline", "distance":3.28}
-                     ],
-        "elevation":48.77,
-        "fairlyActiveMinutes":0,
-        "floors":16,
-        "lightlyActiveMinutes":0,
-        "marginalCalories":200,
-        "sedentaryMinutes":1166,
-        "steps":0,
-        "veryActiveMinutes":0
-    }
+@synthesize fairlyActiveMinutes;
+@synthesize lightlyActiveMinutes;
+@synthesize sedentaryMinutes;
+@synthesize veryActiveMinutes;
+
+@synthesize elevation;
+@synthesize marginalCalories;
+
+@synthesize dateForActivity;
+
+- (void) dealloc {
+    
+    self.activities = nil; 
+    
+    self.goalActiveScore = nil;
+    self.goalCaloriesOut = nil;
+    self.goalDistance = nil;
+    self.goalFloors = nil;
+    self.goalSteps = nil;
+    
+    self.activeScore = nil;
+    self.caloriesOut = nil;
+    self.distance = nil;
+    self.floors = nil;
+    self.steps = nil;
+    
+    self.distances = nil;
+    
+    self.fairlyActiveMinutes = nil;
+    self.lightlyActiveMinutes = nil;
+    self.sedentaryMinutes = nil;
+    self.veryActiveMinutes = nil;
+    
+    self.elevation = nil;
+    self.marginalCalories = nil;
+
+    self.dateForActivity = nil;
+    
+    [super dealloc];
 }
- */
+
+
++ (FBDailyActivity *) dailyActivityForDictionary: (NSDictionary *) dictionary forDate: (NSDate *) date {
+    
+    FBDailyActivity *dailyActivity = [[FBDailyActivity alloc] init];
+    dailyActivity.dateForActivity = date;
+    
+    NSArray *activitiesJSON = [dictionary objectForKey:@"activities"];
+    NSMutableArray *realActivities = [NSMutableArray array];
+    
+    for(NSDictionary *activityJSON in activitiesJSON) {
+        FBActivity *realActivity = [FBActivity activityFromDictionary:activityJSON forDate:date];
+        [realActivities addObject:realActivity];
+    }
+    
+    dailyActivity.activities = realActivities;
+    
+    NSDictionary *goals = [dictionary objectForKey:@"goals"];
+    
+    dailyActivity.goalActiveScore = [goals objectForKey:@"activeScore"];
+    dailyActivity.goalCaloriesOut = [goals objectForKey:@"caloriesOut"];
+    dailyActivity.goalDistance = [goals objectForKey:@"distance"];
+    dailyActivity.goalFloors = [goals objectForKey:@"floors"];
+    dailyActivity.goalSteps = [goals objectForKey:@"steps"];
+    
+    NSDictionary *summary = [dictionary objectForKey:@"summary"];
+    
+    dailyActivity.activeScore = [summary objectForKey:@"activeScore"];
+    dailyActivity.caloriesOut = [summary objectForKey:@"caloriesOut"];
+    dailyActivity.distance = [summary objectForKey:@"distance"];
+    dailyActivity.floors = [summary objectForKey:@"floors"];
+    dailyActivity.steps = [summary objectForKey:@"steps"];
+    
+    
+    dailyActivity.distances = [summary objectForKey:@"distances"];
+    
+    dailyActivity.fairlyActiveMinutes = [summary objectForKey:@"fairlyActiveMinutes"];
+    dailyActivity.lightlyActiveMinutes = [summary objectForKey:@"lightlyActiveMinutes"];
+    dailyActivity.sedentaryMinutes = [summary objectForKey:@"sedentaryMinutes"];
+    dailyActivity.veryActiveMinutes = [summary objectForKey:@"veryActiveMinutes"];
+    
+    dailyActivity.elevation = [summary objectForKey:@"elevation"];
+    dailyActivity.marginalCalories = [summary objectForKey:@"marginalCalories"];
+    
+    
+    return [dailyActivity autorelease];
+}
 
 @end

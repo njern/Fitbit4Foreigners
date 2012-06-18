@@ -71,7 +71,6 @@
         activity.startTime = [dateFormatter2 dateFromString:fullDateString];
     }
    
- 
     return [activity autorelease];
 }
 
