@@ -313,14 +313,14 @@
 
 - (void) fetchBodyWeightDataFromDate: (NSDate *) fromDate untilDate: (NSDate *) endDate {
     // GET /<api-version>/user/-/body/log/weight/date/<base-date>/<end-date>.<response-format>
-    
+
     NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     
     NSString *fromDateString =  [dateFormat stringFromDate:fromDate];
     NSString *endDateString =  [dateFormat stringFromDate:endDate];
 
-    NSString *urlString = [NSString stringWithFormat:@"http://api.fitbit.com/1/user/-/body/log/weight/date%@/%@.json", fromDateString, endDateString];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.fitbit.com/1/user/-/body/log/weight/date/%@/%@.json", fromDateString, endDateString];
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -348,7 +348,6 @@
     if (ticket.didSucceed) {
         NSString *responseBody = [[[NSString alloc] initWithData:data
                                                         encoding:NSUTF8StringEncoding] autorelease];
-        
         id jsonResult = [responseBody JSONValue];
         
         if([jsonResult isKindOfClass:[NSDictionary class]]) {
@@ -398,7 +397,7 @@
     NSString *fromDateString =  [dateFormat stringFromDate:fromDate];
     NSString *endDateString =  [dateFormat stringFromDate:endDate];
     
-    NSString *urlString = [NSString stringWithFormat:@"http://api.fitbit.com/1/user/-/fat/log/weight/date%@/%@.json", fromDateString, endDateString];
+    NSString *urlString = [NSString stringWithFormat:@"http://api.fitbit.com/1/user/-/fat/log/weight/date/%@/%@.json", fromDateString, endDateString];
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -426,7 +425,6 @@
     if (ticket.didSucceed) {
         NSString *responseBody = [[[NSString alloc] initWithData:data
                                                         encoding:NSUTF8StringEncoding] autorelease];
-        
         id jsonResult = [responseBody JSONValue];
         if([jsonResult isKindOfClass:[NSDictionary class]]) {
             jsonResult = [jsonResult objectForKey:@"fat"];

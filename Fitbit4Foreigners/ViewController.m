@@ -73,6 +73,11 @@
         
         [self.fitbitResources fetchMyUserInfo];
         [self.fitbitResources fetchDevices];
+        [self.fitbitResources fetchActivityStats];
+        [self.fitbitResources fetchBodyFatDataFromDate:[NSDate date] untilDate:[NSDate date]];
+        [self.fitbitResources fetchBodyWeightDataFromDate:[NSDate date] untilDate:[NSDate date]];
+        [self.fitbitResources fetchBodyMeasurementsForDate:[NSDate date]];
+        [self.fitbitResources fetchMyActivitiesForDate:[NSDate date]];
         // FETCH DATA ABOUT USER!
     
     }
