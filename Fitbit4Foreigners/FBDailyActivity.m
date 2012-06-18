@@ -95,12 +95,22 @@
     
     dailyActivity.activeScore = [summary objectForKey:@"activeScore"];
     dailyActivity.caloriesOut = [summary objectForKey:@"caloriesOut"];
-    dailyActivity.distance = [summary objectForKey:@"distance"];
     dailyActivity.floors = [summary objectForKey:@"floors"];
     dailyActivity.steps = [summary objectForKey:@"steps"];
     
-    
     dailyActivity.distances = [summary objectForKey:@"distances"];
+
+    dailyActivity.distance = [NSNumber numberWithInt:0];
+    
+    // Calculate total distance.
+    for (NSDictionary *activity in dailyActivity.distances) {
+        NSString *activityName = [activity objectForKey:@"activity"];
+        
+        if([activityName isEqualToString:@"total"]) {
+            dailyActivity.distance = [activity objectForKey:@"distance"];
+        }
+    }
+    
     
     dailyActivity.fairlyActiveMinutes = [summary objectForKey:@"fairlyActiveMinutes"];
     dailyActivity.lightlyActiveMinutes = [summary objectForKey:@"lightlyActiveMinutes"];

@@ -20,6 +20,18 @@
 @property (retain, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (retain, nonatomic) IBOutlet UILabel *profileNameLabel;
 
+@property (retain, nonatomic) IBOutlet UILabel *stepsTakenLabel;
+@property (retain, nonatomic) IBOutlet UILabel *floorClimbedLabel;
+@property (retain, nonatomic) IBOutlet UILabel *distanceTravelledTodayLabel;
+@property (retain, nonatomic) IBOutlet UILabel *caloriesBurnedTodayLabel;
+@property (retain, nonatomic) IBOutlet UILabel *activeScoreLabel;
+
+@property (retain, nonatomic) IBOutlet UIProgressView *stepsTakenProgressView;
+@property (retain, nonatomic) IBOutlet UIProgressView *floorsClimbedProgressView;
+@property (retain, nonatomic) IBOutlet UIProgressView *distanceTravelledProgressView;
+@property (retain, nonatomic) IBOutlet UIProgressView *caloriesBurnedProgressView;
+@property (retain, nonatomic) IBOutlet UIProgressView *activeScoreProgressView;
+
 
 - (IBAction)getStartedButtonPressed:(UIButton *)sender;
 
