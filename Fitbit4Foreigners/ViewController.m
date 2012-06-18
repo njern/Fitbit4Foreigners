@@ -152,7 +152,6 @@
 }
 
 - (void) gotResponseToMyUserInfoQuery: (FBUserInfo *) response {
-    // - (void)loadImageWithURL:(NSURL *)URL;
     
     self.profileImageView.imageURL = response.avatarURL;
     self.profileNameLabel.text = response.fullName;
@@ -181,6 +180,13 @@
     
 }
 - (void) bodyFatQueryFailedWithError: (NSError *) error {
+    
+}
+
+- (void) gotResponseToActivityStatsQuery: (FBActivityStats *) response {
+    
+}
+- (void) activityStatsQueryFailedWithError: (NSError *) error {
     
 }
 

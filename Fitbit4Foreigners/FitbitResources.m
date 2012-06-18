@@ -11,6 +11,9 @@
 #import "SBJson.h"
 #import "FBUserInfo.h"
 #import "FBDevice.h"
+#import "FBActivityStats.h"
+
+
 @interface FitbitResources()
 
 @property (nonatomic, retain) FitbitAuthorization *authorization;
@@ -453,7 +456,10 @@
         
         if(jsonResult && [jsonResult isKindOfClass:[NSDictionary class]]) {
             if(self.delegate && [self.delegate respondsToSelector:@selector(gotResponseToActivityStatsQuery:)]) {
-                [self.delegate gotResponseToActivityStatsQuery:jsonResult];
+                
+                FBActivityStats *activityStats = [FBActivityStats activityStatsFromDictionary: jsonResult];
+                
+                [self.delegate gotResponseToActivityStatsQuery:activityStats];
             }
         }
         
