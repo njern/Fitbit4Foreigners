@@ -18,7 +18,7 @@
 #import "FitbitProfileCell.h"
 #import "FitbitActivityCell.h"
 #import "TimeUtilities.h"
-
+#import "MBProgressHUD.h"
 #define NUMBER_OF_SECTIONS 2
 #define PROFILE_CELL_SECTION 0
 #define ACTIVITIES_CELL_SECTION 1
@@ -58,6 +58,9 @@
     
     self.profileCellLoader = nil;
     self.activityCellLoader = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     [super dealloc];
 }
 
@@ -70,6 +73,8 @@
     return self;
 }
 
+
+// Use lazy initialization for Cell Loaders.
 - (UINib *) profileCellLoader {
     if(self->profileCellLoader == nil) {
         self->profileCellLoader = [[UINib nibWithNibName:@"FitbitProfileCell" bundle:[NSBundle mainBundle]] retain];
@@ -85,7 +90,11 @@
 }
 
 
-
+/**
+ * Convenience method for setting the  
+ * color best corresponding to the percent
+ * of the user's goal that has been achieved.
+ */
 - (UIColor *) colorForScore: (NSNumber *) achieved ofGoal: (NSNumber *) goal {
     
     if([achieved floatValue] / [goal floatValue] < 0.25) {
@@ -101,14 +110,14 @@
     }
     
     else if([achieved floatValue] / [goal floatValue] < 0.99) {
-        return [UIColor greenColor];
+        return [UIColor blueColor];
     }
     
-    return [UIColor blueColor];
+    return [UIColor greenColor];
     
 }
 
-
+// 
 - (void)rightSwipe:(id)sender
 {
     NSLog(@"Right swipe detected!");
@@ -117,6 +126,17 @@
 - (void)leftSwipe:(id)sender
 {
     NSLog(@"Left swipe detected!");
+}
+
+
+// Handle incoming "edit goal" notifications
+- (void) editGoalNotificationReceived: (NSNotification *) notification {
+   
+    id sender = [notification.userInfo objectForKey:@"sender"];
+    
+    if([sender isKindOfClass:[FitbitActivityCell class]]) {
+        NSLog(@"Got notification from %@ cell", [(FitbitActivityCell *) sender activityNameLabel].text);
+    }
 }
 
 
@@ -141,6 +161,12 @@
     
     else {
         
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Loading profile";
+        hud.dimBackground = YES;
+        hud.minShowTime = 1.5;
+        hud.removeFromSuperViewOnHide = YES;
+        
         [self.fitbitResources fetchMyUserInfo];
         [self.fitbitResources fetchDevices];
         [self.fitbitResources fetchMyActivitiesForDate:[NSDate date]];
@@ -154,8 +180,14 @@
     }
     
     
+    // Subscribe to "Edit Goal" notifications
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(editGoalNotificationReceived:)
+     name:EDIT_GOAL_BUTTON_PRESSED_NOTIFICATION
+     object:nil];    
     
-    
+
     // Set up swipe detection.
     
     // Recognizing RIGHT swiping gestures
@@ -169,7 +201,7 @@
     leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.tableView addGestureRecognizer:leftSwipeGestureRecognizer];
     [leftSwipeGestureRecognizer release];
-
+    
     
     // Set our image background && make sure it shows through.
     self.parentViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"fitbit_background.png"]];
@@ -246,6 +278,10 @@
             profileCell.backgroundView = [UACellBackgroundView getBackgroundCellView];
             [(UACellBackgroundView *) profileCell.backgroundView setPosition:UACellBackgroundViewPositionSingle];
             
+            // Set the profile image to the default male image while waiting for the real result.
+            profileCell.profileImageView.image = [UIImage imageNamed:@"defaultProfileImage.png"];
+            
+            // Load the real profile image asynchronously.
             profileCell.profileImageView.imageURL = self.userInfo.avatarURL;
             
             // Add rounded edges to the imageView
@@ -428,7 +464,7 @@
     }
     
     if(section == ACTIVITIES_CELL_SECTION) {
-        return @"Activities";
+        return @"Daily activities";
     }
     
     else return @"";
@@ -498,10 +534,20 @@
 }
 
 
+#pragma mark - helper methods / FitbitAuthorizationDelegate
+
+- (void) reloadTableIfNecessary {
+    
+    if(self.currentdailyActivity && self.userInfo && self.devices) {
+        [(UITableView *) self.view reloadData];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+    }
+}
 
 
-
-// FitbitAuthorizationDelegate.
+#pragma mark - FitbitAuthorizationDelegate
 
 - (void) gotAuthorizationURL: (NSURL *) url {
     
@@ -523,11 +569,11 @@
 }
 
 
-
-// FitbitResourcesDelegate
+#pragma mark - FitbitResourcesDelegate
 
 - (void) gotResponseToDevicesQuery: (NSArray *) _devices {
     self.devices = _devices;
+    [self reloadTableIfNecessary];
 }
 - (void) devicesQueryFailedWithError: (NSError *) error {
     NSLog(@"devicesQueryFailedWithError: %@", error);
@@ -537,6 +583,7 @@
 - (void) gotResponseToActivitiesQuery: (FBDailyActivity *) response {
     
     self.currentdailyActivity = response;
+    [self reloadTableIfNecessary];
 }
 - (void) activitiesQueryFailedWithError: (NSError *) error {
     NSLog(@"activitiesQueryFailedWithError: %@", error);
@@ -546,8 +593,8 @@
 - (void) gotResponseToMyUserInfoQuery: (FBUserInfo *) response {
     
     self.userInfo = response;
+    [self reloadTableIfNecessary];
     
-    [(UITableView *) self.view reloadData];
 }
 - (void) myUserInfoQueryFailedWithError: (NSError *) error {
     NSLog(@"myUserInfoQueryFailedWithError: %@", error);

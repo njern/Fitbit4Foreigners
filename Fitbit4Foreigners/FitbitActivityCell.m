@@ -35,4 +35,17 @@
     [activityProgressView release];
     [super dealloc];
 }
+
+- (IBAction)editGoalButtonPressed:(UIButton *)sender {
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:self forKey:@"sender"];
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:EDIT_GOAL_BUTTON_PRESSED_NOTIFICATION 
+     object:self
+     userInfo:userInfo];
+
+    
+}
+
 @end

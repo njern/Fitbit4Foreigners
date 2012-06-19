@@ -13,6 +13,7 @@
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUIProgressView</string>
 			<string>IBUITableViewCell</string>
+			<string>IBUIButton</string>
 			<string>IBUILabel</string>
 			<string>IBProxyObject</string>
 		</array>
@@ -32,21 +33,21 @@
 				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUITableViewCell" id="164743428">
+			<object class="IBUITableViewCell" id="818663963">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="1016526507">
-						<reference key="NSNextResponder" ref="164743428"/>
+					<object class="IBUIView" id="400298678">
+						<reference key="NSNextResponder" ref="818663963"/>
 						<int key="NSvFlags">256</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUILabel" id="702345941">
-								<reference key="NSNextResponder" ref="1016526507"/>
+							<object class="IBUILabel" id="42163116">
+								<reference key="NSNextResponder" ref="400298678"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 9}, {77, 21}}</string>
-								<reference key="NSSuperview" ref="1016526507"/>
+								<reference key="NSSuperview" ref="400298678"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="421975329"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -58,7 +59,7 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 								</object>
-								<object class="NSColor" key="IBUIHighlightedColor" id="189400084">
+								<object class="NSColor" key="IBUIHighlightedColor" id="803365783">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
@@ -77,12 +78,13 @@
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
-							<object class="IBUILabel" id="927075818">
-								<reference key="NSNextResponder" ref="1016526507"/>
+							<object class="IBUILabel" id="421975329">
+								<reference key="NSNextResponder" ref="400298678"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{105, 5}, {175, 30}}</string>
-								<reference key="NSSuperview" ref="1016526507"/>
+								<reference key="NSSuperview" ref="400298678"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="535012965"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -94,7 +96,7 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
-								<reference key="IBUIHighlightedColor" ref="189400084"/>
+								<reference key="IBUIHighlightedColor" ref="803365783"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">2</int>
@@ -111,22 +113,57 @@
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 							</object>
-							<object class="IBUIProgressView" id="266628746">
-								<reference key="NSNextResponder" ref="1016526507"/>
+							<object class="IBUIProgressView" id="535012965">
+								<reference key="NSNextResponder" ref="400298678"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 45}, {260, 9}}</string>
-								<reference key="NSSuperview" ref="1016526507"/>
+								<reference key="NSSuperview" ref="400298678"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="995095395"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<float key="IBUIProgress">0.5</float>
 							</object>
+							<object class="IBUIButton" id="995095395">
+								<reference key="NSNextResponder" ref="400298678"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{223, 50}, {84, 30}}</string>
+								<reference key="NSSuperview" ref="400298678"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<bool key="IBUIReversesTitleShadowWhenHighlighted">YES</bool>
+								<string key="IBUINormalTitle">Edit goal</string>
+								<reference key="IBUIHighlightedTitleColor" ref="803365783"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDEAA</bytes>
+								</object>
+								<object class="NSColor" key="IBUINormalTitleShadowColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC41AA</bytes>
+								</object>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<string key="name">Futura-Medium</string>
+									<string key="family">Futura</string>
+									<int key="traits">0</int>
+									<double key="pointSize">12</double>
+								</object>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Futura-Medium</string>
+									<double key="NSSize">12</double>
+									<int key="NSfFlags">16</int>
+								</object>
+							</object>
 						</array>
 						<string key="NSFrameSize">{300, 74}</string>
-						<reference key="NSSuperview" ref="164743428"/>
+						<reference key="NSSuperview" ref="818663963"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="702345941"/>
+						<reference key="NSNextKeyView" ref="42163116"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -142,10 +179,10 @@
 				<string key="NSFrameSize">{300, 75}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="1016526507"/>
+				<reference key="NSNextKeyView" ref="400298678"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-				<reference key="IBUIContentView" ref="1016526507"/>
+				<reference key="IBUIContentView" ref="400298678"/>
 				<string key="IBUIReuseIdentifier">FitbitActivityCell</string>
 				<real value="75" key="IBUIRowHeight"/>
 			</object>
@@ -155,26 +192,35 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">activityNameLabel</string>
-						<reference key="source" ref="164743428"/>
-						<reference key="destination" ref="702345941"/>
+						<reference key="source" ref="818663963"/>
+						<reference key="destination" ref="42163116"/>
 					</object>
 					<int key="connectionID">10</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">activityGoalLabel</string>
-						<reference key="source" ref="164743428"/>
-						<reference key="destination" ref="927075818"/>
+						<reference key="source" ref="818663963"/>
+						<reference key="destination" ref="421975329"/>
 					</object>
 					<int key="connectionID">12</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">activityProgressView</string>
-						<reference key="source" ref="164743428"/>
-						<reference key="destination" ref="266628746"/>
+						<reference key="source" ref="818663963"/>
+						<reference key="destination" ref="535012965"/>
 					</object>
 					<int key="connectionID">13</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">editGoalButtonPressed:</string>
+						<reference key="source" ref="995095395"/>
+						<reference key="destination" ref="818663963"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">16</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -198,28 +244,34 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">3</int>
-						<reference key="object" ref="164743428"/>
+						<reference key="object" ref="818663963"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="702345941"/>
-							<reference ref="266628746"/>
-							<reference ref="927075818"/>
+							<reference ref="42163116"/>
+							<reference ref="535012965"/>
+							<reference ref="421975329"/>
+							<reference ref="995095395"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
-						<reference key="object" ref="702345941"/>
-						<reference key="parent" ref="164743428"/>
+						<reference key="object" ref="42163116"/>
+						<reference key="parent" ref="818663963"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
-						<reference key="object" ref="927075818"/>
-						<reference key="parent" ref="164743428"/>
+						<reference key="object" ref="421975329"/>
+						<reference key="parent" ref="818663963"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="266628746"/>
-						<reference key="parent" ref="164743428"/>
+						<reference key="object" ref="535012965"/>
+						<reference key="parent" ref="818663963"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">14</int>
+						<reference key="object" ref="995095395"/>
+						<reference key="parent" ref="818663963"/>
 					</object>
 				</array>
 			</object>
@@ -228,6 +280,8 @@
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="0.0" key="14.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="3.CustomClassName">FitbitActivityCell</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -238,7 +292,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">16</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -253,6 +307,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">FitbitActivityCell</string>
 					<string key="superclassName">UITableViewCell</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">editGoalButtonPressed:</string>
+						<string key="NS.object.0">UIButton</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">editGoalButtonPressed:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">editGoalButtonPressed:</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="activityGoalLabel">UILabel</string>
 						<string key="activityNameLabel">UILabel</string>

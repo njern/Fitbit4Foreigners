@@ -46,6 +46,9 @@
 		649879261590A16F00CE22E0 /* profileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879241590A16F00CE22E0 /* profileIcon@2x.png */; };
 		649879271590A16F00CE22E0 /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879251590A16F00CE22E0 /* profileIcon.png */; };
 		6498792E1590A33000CE22E0 /* TimeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6498792D1590A33000CE22E0 /* TimeUtilities.m */; };
+		649879311590F94800CE22E0 /* defaultProfileImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 6498792F1590F94800CE22E0 /* defaultProfileImage.png */; };
+		649879321590F94800CE22E0 /* defaultProfileImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879301590F94800CE22E0 /* defaultProfileImage@2x.png */; };
+		649879351590FA7000CE22E0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 649879341590FA7000CE22E0 /* MBProgressHUD.m */; };
 		64B495DD158F9F3F002FB45C /* fitbit_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B495DB158F9F3F002FB45C /* fitbit_background.png */; };
 		64B495DE158F9F3F002FB45C /* fitbit_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */; };
 		64DB5E711586778500F3E383 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E491586778500F3E383 /* NSMutableURLRequest+Parameters.m */; };
@@ -146,6 +149,10 @@
 		649879251590A16F00CE22E0 /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
 		6498792C1590A33000CE22E0 /* TimeUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeUtilities.h; sourceTree = "<group>"; };
 		6498792D1590A33000CE22E0 /* TimeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeUtilities.m; sourceTree = "<group>"; };
+		6498792F1590F94800CE22E0 /* defaultProfileImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultProfileImage.png; sourceTree = "<group>"; };
+		649879301590F94800CE22E0 /* defaultProfileImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultProfileImage@2x.png"; sourceTree = "<group>"; };
+		649879331590FA7000CE22E0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		649879341590FA7000CE22E0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		64B495DB158F9F3F002FB45C /* fitbit_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitbit_background.png; sourceTree = "<group>"; };
 		64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit_background@2x.png"; sourceTree = "<group>"; };
 		64DB5E481586778500F3E383 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -275,6 +282,8 @@
 				64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */,
 				649879241590A16F00CE22E0 /* profileIcon@2x.png */,
 				649879251590A16F00CE22E0 /* profileIcon.png */,
+				6498792F1590F94800CE22E0 /* defaultProfileImage.png */,
+				649879301590F94800CE22E0 /* defaultProfileImage@2x.png */,
 				6429670915836267005689E3 /* Fitbit4Foreigners-Info.plist */,
 				6429670A15836267005689E3 /* InfoPlist.strings */,
 				6429670D15836267005689E3 /* main.m */,
@@ -417,6 +426,8 @@
 		64F5788D1588C72A00E8030D /* Other libraries */ = {
 			isa = PBXGroup;
 			children = (
+				649879331590FA7000CE22E0 /* MBProgressHUD.h */,
+				649879341590FA7000CE22E0 /* MBProgressHUD.m */,
 				64F578891588C6FF00E8030D /* AsyncImageView.h */,
 				64F5788A1588C6FF00E8030D /* AsyncImageView.m */,
 				6498790815905C9700CE22E0 /* UACellBackgroundView.h */,
@@ -485,6 +496,8 @@
 				64987923159092BC00CE22E0 /* FitbitActivityCell.xib in Resources */,
 				649879261590A16F00CE22E0 /* profileIcon@2x.png in Resources */,
 				649879271590A16F00CE22E0 /* profileIcon.png in Resources */,
+				649879311590F94800CE22E0 /* defaultProfileImage.png in Resources */,
+				649879321590F94800CE22E0 /* defaultProfileImage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +557,7 @@
 				64987912159081BC00CE22E0 /* FitbitProfileCell.m in Sources */,
 				64987921159092AC00CE22E0 /* FitbitActivityCell.m in Sources */,
 				6498792E1590A33000CE22E0 /* TimeUtilities.m in Sources */,
+				649879351590FA7000CE22E0 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

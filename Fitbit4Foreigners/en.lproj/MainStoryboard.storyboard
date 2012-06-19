@@ -245,12 +245,12 @@
             </objects>
             <point key="canvasLocation" x="871" y="385"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Me-->
         <scene sceneID="C1I-US-a6h">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nbb-3M-0jH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="P1p-ac-1yR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="profileIcon.png" id="YF7-E1-hbN"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="profileIcon.png" id="YF7-E1-hbN"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="TAY-yF-6MN">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
