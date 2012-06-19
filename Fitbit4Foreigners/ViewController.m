@@ -40,6 +40,11 @@
 @synthesize distanceTravelledProgressView;
 @synthesize caloriesBurnedProgressView;
 @synthesize activeScoreProgressView;
+@synthesize stepsTakenGoalLabel;
+@synthesize floorClimbedGoalLabel;
+@synthesize distanceTravelledGoalLabel;
+@synthesize caloriesBurnedGoalLabel;
+@synthesize activeScoreGoalLabel;
 @synthesize fitbitResources;
 
 @synthesize fitbitAuthorization;
@@ -71,6 +76,11 @@
     
     self.currentdailyActivity = nil;
     
+    [stepsTakenGoalLabel release];
+    [floorClimbedGoalLabel release];
+    [distanceTravelledGoalLabel release];
+    [caloriesBurnedGoalLabel release];
+    [activeScoreGoalLabel release];
     [super dealloc];
 }
 
@@ -112,6 +122,8 @@
     }
     
     
+   
+    
     // Do any additional setup after loading the view, typically from a nib.
     
 }
@@ -133,6 +145,11 @@
     [self setDistanceTravelledProgressView:nil];
     [self setCaloriesBurnedProgressView:nil];
     [self setActiveScoreProgressView:nil];
+    [self setStepsTakenGoalLabel:nil];
+    [self setFloorClimbedGoalLabel:nil];
+    [self setDistanceTravelledGoalLabel:nil];
+    [self setCaloriesBurnedGoalLabel:nil];
+    [self setActiveScoreGoalLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -238,7 +255,19 @@
     self.caloriesBurnedTodayLabel.text = [NSString stringWithFormat:@"%@ calories burned today", response.caloriesOut];
     self.activeScoreLabel.text = [NSString stringWithFormat:@"%@ active score", response.activeScore];
     
+    // Set values
     
+    self.stepsTakenGoalLabel.text = [NSString stringWithFormat:@"%0.1f%% of goal (%d)", [self.currentdailyActivity.steps floatValue] / [self.currentdailyActivity.goalSteps floatValue] * 100, self.currentdailyActivity.goalSteps.intValue];
+   
+     self.floorClimbedGoalLabel.text = [NSString stringWithFormat:@"%0.1f%% of goal (%d)", [self.currentdailyActivity.floors floatValue] / [self.currentdailyActivity.goalFloors floatValue] * 100, self.currentdailyActivity.goalFloors.intValue];
+    
+     self.distanceTravelledGoalLabel.text = [NSString stringWithFormat:@"%0.1f%% of goal (%d km)", [self.currentdailyActivity.distance floatValue] / [self.currentdailyActivity.goalDistance floatValue] * 100, self.currentdailyActivity.goalDistance.intValue];
+    
+     self.caloriesBurnedGoalLabel.text = [NSString stringWithFormat:@"%0.1f%% of goal of (%d cal)", [self.currentdailyActivity.caloriesOut floatValue] / [self.currentdailyActivity.goalCaloriesOut floatValue] * 100, self.currentdailyActivity.goalCaloriesOut.intValue];
+    
+     self.activeScoreGoalLabel.text = [NSString stringWithFormat:@"%0.1f%% of goal of (%d)", [self.currentdailyActivity.activeScore floatValue] / [self.currentdailyActivity.goalActiveScore floatValue] * 100, self.currentdailyActivity.goalActiveScore.intValue];
+    
+   
     [self redrawProgressBars];
     
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iUf-8U-M92">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -88,6 +88,41 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1230 active score" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontSizeToFit="NO" id="sig-bk-QOa">
+                                        <rect key="frame" x="150" y="243" width="150" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="10"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1230 active score" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontSizeToFit="NO" id="gVn-jA-78t">
+                                        <rect key="frame" x="150" y="184" width="150" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="10"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1230 active score" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontSizeToFit="NO" id="G2O-Lb-pyw">
+                                        <rect key="frame" x="150" y="126" width="150" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="10"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1230 active score" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontSizeToFit="NO" id="fLm-BC-nCe">
+                                        <rect key="frame" x="150" y="369" width="150" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="10"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1230 active score" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontSizeToFit="NO" id="6Lg-uy-Zfv">
+                                        <rect key="frame" x="150" y="300" width="150" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="10"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" id="XoB-Iv-vjc">
                                         <rect key="frame" x="150" y="118" width="150" height="9"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -120,29 +155,150 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activeScoreGoalLabel" destination="fLm-BC-nCe" id="xtb-gE-DNX"/>
                         <outlet property="activeScoreLabel" destination="lxq-V6-fcQ" id="Nlc-xG-EXZ"/>
                         <outlet property="activeScoreProgressView" destination="PUe-z8-fJ6" id="PVS-Jr-30E"/>
+                        <outlet property="caloriesBurnedGoalLabel" destination="6Lg-uy-Zfv" id="1Vd-Iy-JnE"/>
                         <outlet property="caloriesBurnedProgressView" destination="12i-hI-dNi" id="Aoq-Xd-EfA"/>
                         <outlet property="caloriesBurnedTodayLabel" destination="smg-dS-Vjm" id="zsI-ev-ceo"/>
+                        <outlet property="distanceTravelledGoalLabel" destination="sig-bk-QOa" id="MrY-Rr-46W"/>
                         <outlet property="distanceTravelledProgressView" destination="dWX-eE-Ahr" id="T1G-Bd-Tzc"/>
                         <outlet property="distanceTravelledTodayLabel" destination="FLy-Dg-eUS" id="DSy-uz-7Gl"/>
+                        <outlet property="floorClimbedGoalLabel" destination="gVn-jA-78t" id="fR6-GP-hqq"/>
                         <outlet property="floorClimbedLabel" destination="X2A-wS-rQF" id="oJl-Wc-9gp"/>
                         <outlet property="floorsClimbedProgressView" destination="AJW-A0-Fy5" id="ePA-eo-SAO"/>
                         <outlet property="getStartedButton" destination="Krt-lh-bdD" id="t4U-DS-BVP"/>
                         <outlet property="gettingStartedSpinner" destination="B9b-cn-XTh" id="o9L-9r-Tr5"/>
                         <outlet property="profileImageView" destination="BJO-5C-Svu" id="uvm-5S-7iq"/>
                         <outlet property="profileNameLabel" destination="qye-Ln-vKc" id="RYn-U7-Qs3"/>
+                        <outlet property="stepsTakenGoalLabel" destination="G2O-Lb-pyw" id="rIU-3I-Gb8"/>
                         <outlet property="stepsTakenLabel" destination="Du9-Nj-x0c" id="z0H-DR-Quq"/>
                         <outlet property="stepsTakenProgressView" destination="XoB-Iv-vjc" id="Qfk-Nn-8fe"/>
                         <outlet property="userInterfaceContainerView" destination="oRs-8d-4AD" id="Xgb-lu-pUt"/>
                     </connections>
                 </viewController>
             </objects>
+            <point key="canvasLocation" x="-182" y="-252"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="q28-1T-ilk">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPK-qe-zIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController definesPresentationContext="YES" id="iUf-8U-M92" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="5zk-u0-lYk">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="P1p-ac-1yR" kind="relationship" relationship="viewControllers" id="pho-q3-IrV"/>
+                        <segue destination="1gd-lF-dJ4" kind="relationship" relationship="viewControllers" id="Vif-IM-LBM"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="321" y="7"/>
+        </scene>
+        <!--Profile View Controller - Fitbit-->
+        <scene sceneID="0ad-3o-uYw">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddk-qg-S9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Bro-2k-jE2" customClass="FBProfileViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Xoz-6q-x62">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="reT-fL-HjF">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Bro-2k-jE2" id="BGf-Dd-F8g"/>
+                            <outlet property="delegate" destination="Bro-2k-jE2" id="ASK-i4-ljo"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Fitbit" id="wv3-aF-RPr"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1361" y="-237"/>
+        </scene>
+        <!--View Controller - Item-->
+        <scene sceneID="BDc-9O-UMP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zr4-W9-Lbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="1gd-lF-dJ4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="arF-mQ-WyT">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Cl9-EP-Nu4"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="871" y="385"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="C1I-US-a6h">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nbb-3M-0jH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="P1p-ac-1yR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="profileIcon.png" id="YF7-E1-hbN"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="TAY-yF-6MN">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Bro-2k-jE2" kind="relationship" relationship="rootViewController" id="vND-jQ-qvA"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="871" y="-237"/>
         </scene>
     </scenes>
     <resources>
         <image name="fitbit_background.png" width="320" height="480"/>
+        <image name="profileIcon.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="FBProfileViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FBProfileViewController.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="getStartedButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="activeScoreGoalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="activeScoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="activeScoreProgressView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="caloriesBurnedGoalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="caloriesBurnedProgressView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="caloriesBurnedTodayLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="distanceTravelledGoalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="distanceTravelledProgressView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="distanceTravelledTodayLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="floorClimbedGoalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="floorClimbedLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="floorsClimbedProgressView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="getStartedButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="gettingStartedSpinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="profileImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="profileNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stepsTakenGoalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stepsTakenLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stepsTakenProgressView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="userInterfaceContainerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

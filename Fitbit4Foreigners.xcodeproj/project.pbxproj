@@ -37,6 +37,15 @@
 		649379161587C0CB0086ED7A /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 649379081587C0CB0086ED7A /* SBJsonTokeniser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		649379171587C0CB0086ED7A /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6493790A1587C0CB0086ED7A /* SBJsonUTF8Stream.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		649379181587C0CB0086ED7A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6493790C1587C0CB0086ED7A /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		6498790A15905C9700CE22E0 /* UACellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6498790915905C9700CE22E0 /* UACellBackgroundView.m */; };
+		6498790E15905F2A00CE22E0 /* FBProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6498790D15905F2A00CE22E0 /* FBProfileViewController.m */; };
+		64987912159081BC00CE22E0 /* FitbitProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64987911159081BC00CE22E0 /* FitbitProfileCell.m */; };
+		649879141590847000CE22E0 /* FitbitProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649879131590847000CE22E0 /* FitbitProfileCell.xib */; };
+		64987921159092AC00CE22E0 /* FitbitActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64987920159092AC00CE22E0 /* FitbitActivityCell.m */; };
+		64987923159092BC00CE22E0 /* FitbitActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64987922159092BB00CE22E0 /* FitbitActivityCell.xib */; };
+		649879261590A16F00CE22E0 /* profileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879241590A16F00CE22E0 /* profileIcon@2x.png */; };
+		649879271590A16F00CE22E0 /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879251590A16F00CE22E0 /* profileIcon.png */; };
+		6498792E1590A33000CE22E0 /* TimeUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 6498792D1590A33000CE22E0 /* TimeUtilities.m */; };
 		64B495DD158F9F3F002FB45C /* fitbit_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B495DB158F9F3F002FB45C /* fitbit_background.png */; };
 		64B495DE158F9F3F002FB45C /* fitbit_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */; };
 		64DB5E711586778500F3E383 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E491586778500F3E383 /* NSMutableURLRequest+Parameters.m */; };
@@ -123,6 +132,20 @@
 		6493790A1587C0CB0086ED7A /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		6493790B1587C0CB0086ED7A /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		6493790C1587C0CB0086ED7A /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		6498790815905C9700CE22E0 /* UACellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UACellBackgroundView.h; sourceTree = "<group>"; };
+		6498790915905C9700CE22E0 /* UACellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UACellBackgroundView.m; sourceTree = "<group>"; };
+		6498790C15905F2A00CE22E0 /* FBProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBProfileViewController.h; sourceTree = "<group>"; };
+		6498790D15905F2A00CE22E0 /* FBProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBProfileViewController.m; sourceTree = "<group>"; };
+		64987910159081BC00CE22E0 /* FitbitProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitProfileCell.h; sourceTree = "<group>"; };
+		64987911159081BC00CE22E0 /* FitbitProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitProfileCell.m; sourceTree = "<group>"; };
+		649879131590847000CE22E0 /* FitbitProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitbitProfileCell.xib; sourceTree = "<group>"; };
+		6498791F159092AC00CE22E0 /* FitbitActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitActivityCell.h; sourceTree = "<group>"; };
+		64987920159092AC00CE22E0 /* FitbitActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitActivityCell.m; sourceTree = "<group>"; };
+		64987922159092BB00CE22E0 /* FitbitActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitbitActivityCell.xib; sourceTree = "<group>"; };
+		649879241590A16F00CE22E0 /* profileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profileIcon@2x.png"; sourceTree = "<group>"; };
+		649879251590A16F00CE22E0 /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
+		6498792C1590A33000CE22E0 /* TimeUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeUtilities.h; sourceTree = "<group>"; };
+		6498792D1590A33000CE22E0 /* TimeUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeUtilities.m; sourceTree = "<group>"; };
 		64B495DB158F9F3F002FB45C /* fitbit_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitbit_background.png; sourceTree = "<group>"; };
 		64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit_background@2x.png"; sourceTree = "<group>"; };
 		64DB5E481586778500F3E383 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
@@ -222,6 +245,7 @@
 		6429670715836267005689E3 /* Fitbit4Foreigners */ = {
 			isa = PBXGroup;
 			children = (
+				6498790F1590819F00CE22E0 /* Custom cells */,
 				643A6630158E136C00505E27 /* Data models (Fitbit) */,
 				64F5788D1588C72A00E8030D /* Other libraries */,
 				649378F31587C0C00086ED7A /* SBJSON */,
@@ -231,10 +255,14 @@
 				6429671315836267005689E3 /* MainStoryboard.storyboard */,
 				6429671615836267005689E3 /* ViewController.h */,
 				6429671715836267005689E3 /* ViewController.m */,
+				6498790C15905F2A00CE22E0 /* FBProfileViewController.h */,
+				6498790D15905F2A00CE22E0 /* FBProfileViewController.m */,
 				64DB5E851587501200F3E383 /* FitbitAuthorization.h */,
 				64DB5E861587501200F3E383 /* FitbitAuthorization.m */,
 				649378F01587BAD30086ED7A /* FitbitResources.h */,
 				649378F11587BAD30086ED7A /* FitbitResources.m */,
+				6498792C1590A33000CE22E0 /* TimeUtilities.h */,
+				6498792D1590A33000CE22E0 /* TimeUtilities.m */,
 				6429670815836267005689E3 /* Supporting Files */,
 			);
 			path = Fitbit4Foreigners;
@@ -245,6 +273,8 @@
 			children = (
 				64B495DB158F9F3F002FB45C /* fitbit_background.png */,
 				64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */,
+				649879241590A16F00CE22E0 /* profileIcon@2x.png */,
+				649879251590A16F00CE22E0 /* profileIcon.png */,
 				6429670915836267005689E3 /* Fitbit4Foreigners-Info.plist */,
 				6429670A15836267005689E3 /* InfoPlist.strings */,
 				6429670D15836267005689E3 /* main.m */,
@@ -307,6 +337,19 @@
 				6493790C1587C0CB0086ED7A /* SBJsonWriter.m */,
 			);
 			name = SBJSON;
+			sourceTree = "<group>";
+		};
+		6498790F1590819F00CE22E0 /* Custom cells */ = {
+			isa = PBXGroup;
+			children = (
+				64987910159081BC00CE22E0 /* FitbitProfileCell.h */,
+				64987911159081BC00CE22E0 /* FitbitProfileCell.m */,
+				649879131590847000CE22E0 /* FitbitProfileCell.xib */,
+				6498791F159092AC00CE22E0 /* FitbitActivityCell.h */,
+				64987920159092AC00CE22E0 /* FitbitActivityCell.m */,
+				64987922159092BB00CE22E0 /* FitbitActivityCell.xib */,
+			);
+			name = "Custom cells";
 			sourceTree = "<group>";
 		};
 		64DB5E1C1586772500F3E383 /* oAuthConsumer for iOS */ = {
@@ -376,6 +419,8 @@
 			children = (
 				64F578891588C6FF00E8030D /* AsyncImageView.h */,
 				64F5788A1588C6FF00E8030D /* AsyncImageView.m */,
+				6498790815905C9700CE22E0 /* UACellBackgroundView.h */,
+				6498790915905C9700CE22E0 /* UACellBackgroundView.m */,
 			);
 			name = "Other libraries";
 			sourceTree = "<group>";
@@ -436,6 +481,10 @@
 				64DB5E811586778500F3E383 /* OATestServer.rb in Resources */,
 				64B495DD158F9F3F002FB45C /* fitbit_background.png in Resources */,
 				64B495DE158F9F3F002FB45C /* fitbit_background@2x.png in Resources */,
+				649879141590847000CE22E0 /* FitbitProfileCell.xib in Resources */,
+				64987923159092BC00CE22E0 /* FitbitActivityCell.xib in Resources */,
+				649879261590A16F00CE22E0 /* profileIcon@2x.png in Resources */,
+				649879271590A16F00CE22E0 /* profileIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +539,11 @@
 				643A6643158E13B300505E27 /* FBBodyFatData.m in Sources */,
 				643A6647158F036400505E27 /* FBActivityStats.m in Sources */,
 				643A664A158F3CD900505E27 /* FBActivity.m in Sources */,
+				6498790A15905C9700CE22E0 /* UACellBackgroundView.m in Sources */,
+				6498790E15905F2A00CE22E0 /* FBProfileViewController.m in Sources */,
+				64987912159081BC00CE22E0 /* FitbitProfileCell.m in Sources */,
+				64987921159092AC00CE22E0 /* FitbitActivityCell.m in Sources */,
+				6498792E1590A33000CE22E0 /* TimeUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,6 +32,11 @@
 @property (retain, nonatomic) IBOutlet UIProgressView *caloriesBurnedProgressView;
 @property (retain, nonatomic) IBOutlet UIProgressView *activeScoreProgressView;
 
+@property (retain, nonatomic) IBOutlet UILabel *stepsTakenGoalLabel;
+@property (retain, nonatomic) IBOutlet UILabel *floorClimbedGoalLabel;
+@property (retain, nonatomic) IBOutlet UILabel *distanceTravelledGoalLabel;
+@property (retain, nonatomic) IBOutlet UILabel *caloriesBurnedGoalLabel;
+@property (retain, nonatomic) IBOutlet UILabel *activeScoreGoalLabel;
 
 - (IBAction)getStartedButtonPressed:(UIButton *)sender;
 
