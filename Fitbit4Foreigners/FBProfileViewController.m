@@ -35,6 +35,8 @@
 @property (nonatomic, retain) UINib *profileCellLoader;
 @property (nonatomic, retain) UINib *activityCellLoader;
 
+@property (nonatomic, retain) NSDate *lastRefreshDate;
+@property (nonatomic, retain) SSPullToRefreshView *pullToRefreshView;
 
 @end
 
@@ -49,6 +51,9 @@
 @synthesize profileCellLoader;
 @synthesize activityCellLoader;
 
+@synthesize lastRefreshDate;
+@synthesize pullToRefreshView;
+
 - (void) dealloc {
     self.fitbitAuthorization = nil;
     self.fitbitResources = nil;
@@ -58,6 +63,9 @@
     
     self.profileCellLoader = nil;
     self.activityCellLoader = nil;
+
+    self.lastRefreshDate = nil;
+    self.pullToRefreshView = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
@@ -143,6 +151,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Hook up the pull to refresh view.
+    UITableView *tableView = (UITableView *) self.view;
+    self.pullToRefreshView = [[[SSPullToRefreshView alloc] initWithScrollView:tableView delegate:self] autorelease];
     
     self.navigationController.navigationBarHidden = NO;
     
@@ -335,7 +347,7 @@
                     
                     // Floors
                     activityCell.activityNameLabel.text = @"Floors";
-                    activityCell.activityGoalLabel.text = [NSString stringWithFormat:@"%@ of goal %@", self.currentdailyActivity.goalFloors, self.currentdailyActivity.goalFloors];
+                    activityCell.activityGoalLabel.text = [NSString stringWithFormat:@"%@ of goal %@", self.currentdailyActivity.floors, self.currentdailyActivity.goalFloors];
                     
                     activityCell.activityProgressView.progressTintColor = [self colorForScore:self.currentdailyActivity.floors ofGoal:self.currentdailyActivity.goalFloors];
                     activityCell.activityProgressView.progress = [self.currentdailyActivity.floors floatValue] / [self.currentdailyActivity.goalFloors floatValue];    
@@ -539,10 +551,13 @@
 - (void) reloadTableIfNecessary {
     
     if(self.currentdailyActivity && self.userInfo && self.devices) {
+        
+        self.lastRefreshDate = [NSDate date];
+        
         [(UITableView *) self.view reloadData];
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-
+        [self.pullToRefreshView finishLoading];
     }
 }
 
@@ -629,6 +644,58 @@
     
 }
 
+
+#pragma mark - SSPullToRefreshView helper methods
+
+- (void)refresh {
+    [self.pullToRefreshView startLoading];
+    
+    self.currentdailyActivity = nil;
+    self.userInfo = nil;
+    self.devices = nil;
+    
+    [self.fitbitResources fetchDevices];
+    [self.fitbitResources fetchMyUserInfo];
+    [self.fitbitResources fetchMyActivitiesForDate:[NSDate date]];
+    
+   // [self.pullToRefreshView finishLoading];
+}
+
+#pragma mark - SSPullToRefreshViewDelegate
+
+
+/**
+ Return `NO` if the pull to refresh view should no start loading.
+ */
+- (BOOL)pullToRefreshViewShouldStartLoading:(SSPullToRefreshView *)view {
+    
+    return YES;
+}
+
+/**
+ The pull to refresh view started loading. You should kick off whatever you need to load when this is called.
+ */
+- (void)pullToRefreshViewDidStartLoading:(SSPullToRefreshView *)view {
+    
+    [self refresh];
+}
+
+/**
+ The pull to refresh view finished loading. This will get called when it receives `finishLoading`.
+ */
+- (void)pullToRefreshViewDidFinishLoading:(SSPullToRefreshView *)view {
+    
+}
+
+/**
+ The date when data was last updated. This will get called when it finishes loading or if it receives `refreshLastUpdatedAt`.
+ Some content views may display this date.
+ */
+
+- (NSDate *)pullToRefreshViewLastUpdatedAt:(SSPullToRefreshView *)view {
+    
+    return self.lastRefreshDate;
+}
 
 
 
