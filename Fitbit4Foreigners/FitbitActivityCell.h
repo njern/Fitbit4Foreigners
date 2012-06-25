@@ -10,6 +10,13 @@
 
 static NSString *EDIT_GOAL_BUTTON_PRESSED_NOTIFICATION = @"EDIT_GOAL_BUTTON_PRESSED_NOTIFICATION";
 
+static NSString *STEPS_STRING = @"Steps";
+static NSString *FLOORS_STRING = @"Floors";
+static NSString *DISTANCE_STRING = @"Distance";
+static NSString *CALORIES_OUT_STRING = @"Calories Out";
+static NSString *ACTIVE_SCORE_STRING = @"Active Score";
+
+
 @interface FitbitActivityCell : UITableViewCell
 
 

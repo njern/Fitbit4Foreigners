@@ -47,6 +47,8 @@
 
 + (FBBodyMeasurement *) bodyMeasurementsFromDictionary: (NSDictionary *) dictionary {
     
+    NSLog(@"Parsing body measurement: %@", dictionary);
+    
     NSDictionary *body = [dictionary objectForKey:@"body"];
     NSDictionary *goals = [dictionary objectForKey:@"goals"];  
     

@@ -10,6 +10,7 @@
 
 @interface TimeUtilities : NSObject
 
++ (BOOL) dateIsToday:(NSDate*)dateToCheck;
 + (NSString *) getNicelyFormattedTimeSinceDate: (NSDate *) date;
 
 @end

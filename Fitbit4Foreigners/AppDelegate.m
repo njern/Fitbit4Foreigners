@@ -12,16 +12,21 @@
 
 @synthesize window = _window;
 @synthesize fitbitAuthorization;
+@synthesize fitbitResources;
+@synthesize dateToGetInfoFor;
 
 - (void)dealloc
 {
     [_window release];
+    self.dateToGetInfoFor = nil;
+    
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.dateToGetInfoFor = [NSDate date];
     
     return YES;
 }

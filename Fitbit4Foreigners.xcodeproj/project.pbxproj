@@ -52,8 +52,23 @@
 		649879421591B4EA00CE22E0 /* SSPullToRefreshDefaultContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6498793D1591B4EA00CE22E0 /* SSPullToRefreshDefaultContentView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		649879431591B4EA00CE22E0 /* SSPullToRefreshSimpleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6498793F1591B4EA00CE22E0 /* SSPullToRefreshSimpleContentView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		649879441591B4EA00CE22E0 /* SSPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649879411591B4EA00CE22E0 /* SSPullToRefreshView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		6498794B1591E01700CE22E0 /* body@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879451591E01700CE22E0 /* body@2x.png */; };
+		6498794C1591E01700CE22E0 /* training.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879461591E01700CE22E0 /* training.png */; };
+		6498794D1591E01700CE22E0 /* body.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879471591E01700CE22E0 /* body.png */; };
+		6498794E1591E01700CE22E0 /* training@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879481591E01700CE22E0 /* training@2x.png */; };
+		6498794F1591E01700CE22E0 /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 649879491591E01700CE22E0 /* food.png */; };
+		649879501591E01700CE22E0 /* food@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6498794A1591E01700CE22E0 /* food@2x.png */; };
+		649879531591EB8300CE22E0 /* DateSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 649879521591EB8300CE22E0 /* DateSelectionCell.m */; };
+		649879551591EB9200CE22E0 /* DateSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649879541591EB9200CE22E0 /* DateSelectionCell.xib */; };
+		6498795C1593021D00CE22E0 /* FBBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6498795B1593021D00CE22E0 /* FBBodyViewController.m */; };
+		6498796715933FC000CE22E0 /* FitbitBodyWeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6498796615933FC000CE22E0 /* FitbitBodyWeightCell.m */; };
+		6498796915933FD200CE22E0 /* FitbitBodyWeightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6498796815933FD100CE22E0 /* FitbitBodyWeightCell.xib */; };
+		649879701593413600CE22E0 /* scaleIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6498796E1593413500CE22E0 /* scaleIcon@2x.png */; };
+		649879711593413600CE22E0 /* scaleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6498796F1593413500CE22E0 /* scaleIcon.png */; };
 		64B495DD158F9F3F002FB45C /* fitbit_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B495DB158F9F3F002FB45C /* fitbit_background.png */; };
 		64B495DE158F9F3F002FB45C /* fitbit_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */; };
+		64DAD87F15983EF100C5724E /* fitbit_background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DAD87D15983EF100C5724E /* fitbit_background2@2x.png */; };
+		64DAD88015983EF100C5724E /* fitbit_background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DAD87E15983EF100C5724E /* fitbit_background2.png */; };
 		64DB5E711586778500F3E383 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E491586778500F3E383 /* NSMutableURLRequest+Parameters.m */; };
 		64DB5E721586778500F3E383 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E4B1586778500F3E383 /* NSString+URLEncoding.m */; };
 		64DB5E731586778500F3E383 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DB5E4D1586778500F3E383 /* NSURL+Base.m */; };
@@ -163,8 +178,26 @@
 		6498793F1591B4EA00CE22E0 /* SSPullToRefreshSimpleContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPullToRefreshSimpleContentView.m; sourceTree = "<group>"; };
 		649879401591B4EA00CE22E0 /* SSPullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSPullToRefreshView.h; sourceTree = "<group>"; };
 		649879411591B4EA00CE22E0 /* SSPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSPullToRefreshView.m; sourceTree = "<group>"; };
+		649879451591E01700CE22E0 /* body@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "body@2x.png"; sourceTree = "<group>"; };
+		649879461591E01700CE22E0 /* training.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = training.png; sourceTree = "<group>"; };
+		649879471591E01700CE22E0 /* body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = body.png; sourceTree = "<group>"; };
+		649879481591E01700CE22E0 /* training@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "training@2x.png"; sourceTree = "<group>"; };
+		649879491591E01700CE22E0 /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
+		6498794A1591E01700CE22E0 /* food@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food@2x.png"; sourceTree = "<group>"; };
+		649879511591EB8300CE22E0 /* DateSelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSelectionCell.h; sourceTree = "<group>"; };
+		649879521591EB8300CE22E0 /* DateSelectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSelectionCell.m; sourceTree = "<group>"; };
+		649879541591EB9200CE22E0 /* DateSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateSelectionCell.xib; sourceTree = "<group>"; };
+		6498795A1593021D00CE22E0 /* FBBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBodyViewController.h; sourceTree = "<group>"; };
+		6498795B1593021D00CE22E0 /* FBBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBBodyViewController.m; sourceTree = "<group>"; };
+		6498796515933FC000CE22E0 /* FitbitBodyWeightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitbitBodyWeightCell.h; sourceTree = "<group>"; };
+		6498796615933FC000CE22E0 /* FitbitBodyWeightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitbitBodyWeightCell.m; sourceTree = "<group>"; };
+		6498796815933FD100CE22E0 /* FitbitBodyWeightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FitbitBodyWeightCell.xib; sourceTree = "<group>"; };
+		6498796E1593413500CE22E0 /* scaleIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scaleIcon@2x.png"; sourceTree = "<group>"; };
+		6498796F1593413500CE22E0 /* scaleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scaleIcon.png; sourceTree = "<group>"; };
 		64B495DB158F9F3F002FB45C /* fitbit_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitbit_background.png; sourceTree = "<group>"; };
 		64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit_background@2x.png"; sourceTree = "<group>"; };
+		64DAD87D15983EF100C5724E /* fitbit_background2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit_background2@2x.png"; sourceTree = "<group>"; };
+		64DAD87E15983EF100C5724E /* fitbit_background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitbit_background2.png; sourceTree = "<group>"; };
 		64DB5E481586778500F3E383 /* NSMutableURLRequest+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+Parameters.h"; sourceTree = "<group>"; };
 		64DB5E491586778500F3E383 /* NSMutableURLRequest+Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+Parameters.m"; sourceTree = "<group>"; };
 		64DB5E4A1586778500F3E383 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -275,6 +308,8 @@
 				6429671715836267005689E3 /* ViewController.m */,
 				6498790C15905F2A00CE22E0 /* FBProfileViewController.h */,
 				6498790D15905F2A00CE22E0 /* FBProfileViewController.m */,
+				6498795A1593021D00CE22E0 /* FBBodyViewController.h */,
+				6498795B1593021D00CE22E0 /* FBBodyViewController.m */,
 				64DB5E851587501200F3E383 /* FitbitAuthorization.h */,
 				64DB5E861587501200F3E383 /* FitbitAuthorization.m */,
 				649378F01587BAD30086ED7A /* FitbitResources.h */,
@@ -291,10 +326,20 @@
 			children = (
 				64B495DB158F9F3F002FB45C /* fitbit_background.png */,
 				64B495DC158F9F3F002FB45C /* fitbit_background@2x.png */,
+				64DAD87D15983EF100C5724E /* fitbit_background2@2x.png */,
+				64DAD87E15983EF100C5724E /* fitbit_background2.png */,
 				649879241590A16F00CE22E0 /* profileIcon@2x.png */,
 				649879251590A16F00CE22E0 /* profileIcon.png */,
 				6498792F1590F94800CE22E0 /* defaultProfileImage.png */,
 				649879301590F94800CE22E0 /* defaultProfileImage@2x.png */,
+				649879461591E01700CE22E0 /* training.png */,
+				649879481591E01700CE22E0 /* training@2x.png */,
+				649879471591E01700CE22E0 /* body.png */,
+				649879451591E01700CE22E0 /* body@2x.png */,
+				649879491591E01700CE22E0 /* food.png */,
+				6498794A1591E01700CE22E0 /* food@2x.png */,
+				6498796E1593413500CE22E0 /* scaleIcon@2x.png */,
+				6498796F1593413500CE22E0 /* scaleIcon.png */,
 				6429670915836267005689E3 /* Fitbit4Foreigners-Info.plist */,
 				6429670A15836267005689E3 /* InfoPlist.strings */,
 				6429670D15836267005689E3 /* main.m */,
@@ -368,6 +413,12 @@
 				6498791F159092AC00CE22E0 /* FitbitActivityCell.h */,
 				64987920159092AC00CE22E0 /* FitbitActivityCell.m */,
 				64987922159092BB00CE22E0 /* FitbitActivityCell.xib */,
+				649879511591EB8300CE22E0 /* DateSelectionCell.h */,
+				649879521591EB8300CE22E0 /* DateSelectionCell.m */,
+				649879541591EB9200CE22E0 /* DateSelectionCell.xib */,
+				6498796515933FC000CE22E0 /* FitbitBodyWeightCell.h */,
+				6498796615933FC000CE22E0 /* FitbitBodyWeightCell.m */,
+				6498796815933FD100CE22E0 /* FitbitBodyWeightCell.xib */,
 			);
 			name = "Custom cells";
 			sourceTree = "<group>";
@@ -523,6 +574,18 @@
 				649879271590A16F00CE22E0 /* profileIcon.png in Resources */,
 				649879311590F94800CE22E0 /* defaultProfileImage.png in Resources */,
 				649879321590F94800CE22E0 /* defaultProfileImage@2x.png in Resources */,
+				6498794B1591E01700CE22E0 /* body@2x.png in Resources */,
+				6498794C1591E01700CE22E0 /* training.png in Resources */,
+				6498794D1591E01700CE22E0 /* body.png in Resources */,
+				6498794E1591E01700CE22E0 /* training@2x.png in Resources */,
+				6498794F1591E01700CE22E0 /* food.png in Resources */,
+				649879501591E01700CE22E0 /* food@2x.png in Resources */,
+				649879551591EB9200CE22E0 /* DateSelectionCell.xib in Resources */,
+				6498796915933FD200CE22E0 /* FitbitBodyWeightCell.xib in Resources */,
+				649879701593413600CE22E0 /* scaleIcon@2x.png in Resources */,
+				649879711593413600CE22E0 /* scaleIcon.png in Resources */,
+				64DAD87F15983EF100C5724E /* fitbit_background2@2x.png in Resources */,
+				64DAD88015983EF100C5724E /* fitbit_background2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +649,9 @@
 				649879421591B4EA00CE22E0 /* SSPullToRefreshDefaultContentView.m in Sources */,
 				649879431591B4EA00CE22E0 /* SSPullToRefreshSimpleContentView.m in Sources */,
 				649879441591B4EA00CE22E0 /* SSPullToRefreshView.m in Sources */,
+				649879531591EB8300CE22E0 /* DateSelectionCell.m in Sources */,
+				6498795C1593021D00CE22E0 /* FBBodyViewController.m in Sources */,
+				6498796715933FC000CE22E0 /* FitbitBodyWeightCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

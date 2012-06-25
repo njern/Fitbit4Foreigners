@@ -10,6 +10,31 @@
 
 @implementation TimeUtilities
 
+// Seconds per day (24h * 60m * 60s)
+#define kSecondsPerDay 86400.0f
+
+
+
++ (BOOL) dateIsToday:(NSDate*)dateToCheck
+{
+    // Split today into components
+    NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents* comps = [gregorian components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit) 
+                                           fromDate:[NSDate date]];
+    
+    // Set to this morning 00:00:00
+    [comps setHour:0];
+    [comps setMinute:0];
+    [comps setSecond:0];
+    NSDate* theMidnightHour = [gregorian dateFromComponents:comps];
+    [gregorian release];
+    
+    // Get time difference (in seconds) between date and then
+    NSTimeInterval diff = [dateToCheck timeIntervalSinceDate:theMidnightHour];
+    
+    return ( diff>=0.0f && diff < kSecondsPerDay );
+}
+
 + (NSString *) getNicelyFormattedTimeSinceDate: (NSDate *) date {
     
     if(date == nil) {

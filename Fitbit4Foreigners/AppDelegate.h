@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FitbitAuthorization.h"
+#import "FitbitResources.h"
 
 static NSString *USER_AUTHORIZED_APP_NOTIFICATION = @"UserDidAuthorizeFitbitInWebView";
 
@@ -15,5 +16,8 @@ static NSString *USER_AUTHORIZED_APP_NOTIFICATION = @"UserDidAuthorizeFitbitInWe
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, assign) FitbitAuthorization *fitbitAuthorization;
+@property (nonatomic, assign) FitbitResources *fitbitResources;
+
+@property (nonatomic, retain) NSDate *dateToGetInfoFor;
 
 @end

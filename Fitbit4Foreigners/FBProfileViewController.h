@@ -10,6 +10,6 @@
 #import "FitbitResources.h"
 #import "FitbitAuthorization.h"
 #import "SSPullToRefresh.h"
-@interface FBProfileViewController : UITableViewController <FitbitResourcesDelegate, FitbitAuthorizationDelegate, SSPullToRefreshViewDelegate>
+@interface FBProfileViewController : UITableViewController <FitbitResourcesDelegate, FitbitAuthorizationDelegate, SSPullToRefreshViewDelegate, UIAlertViewDelegate>
 
 @end

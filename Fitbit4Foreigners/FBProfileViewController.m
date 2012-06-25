@@ -17,11 +17,15 @@
 #import "UACellBackgroundView.h"
 #import "FitbitProfileCell.h"
 #import "FitbitActivityCell.h"
+#import "DateSelectionCell.h"
 #import "TimeUtilities.h"
 #import "MBProgressHUD.h"
-#define NUMBER_OF_SECTIONS 2
-#define PROFILE_CELL_SECTION 0
-#define ACTIVITIES_CELL_SECTION 1
+
+
+#define NUMBER_OF_SECTIONS 3
+#define DATE_SELECTION_SECTION 0
+#define PROFILE_CELL_SECTION 1
+#define ACTIVITIES_CELL_SECTION 2
 
 @interface FBProfileViewController ()
 
@@ -34,6 +38,7 @@
 
 @property (nonatomic, retain) UINib *profileCellLoader;
 @property (nonatomic, retain) UINib *activityCellLoader;
+@property (nonatomic, retain) UINib *dateCellLoader;
 
 @property (nonatomic, retain) NSDate *lastRefreshDate;
 @property (nonatomic, retain) SSPullToRefreshView *pullToRefreshView;
@@ -50,6 +55,7 @@
 
 @synthesize profileCellLoader;
 @synthesize activityCellLoader;
+@synthesize dateCellLoader;
 
 @synthesize lastRefreshDate;
 @synthesize pullToRefreshView;
@@ -63,12 +69,13 @@
     
     self.profileCellLoader = nil;
     self.activityCellLoader = nil;
-
+    self.dateCellLoader = nil;
+    
     self.lastRefreshDate = nil;
     self.pullToRefreshView = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
+    
     [super dealloc];
 }
 
@@ -95,6 +102,14 @@
         self->activityCellLoader = [[UINib nibWithNibName:@"FitbitActivityCell" bundle:[NSBundle mainBundle]] retain];
     }
     return self->activityCellLoader;
+}
+
+- (UINib *) dateCellLoader {
+    if(self->dateCellLoader == nil) {
+        self->dateCellLoader = [[UINib nibWithNibName:@"DateSelectionCell" bundle:[NSBundle mainBundle]] retain];
+    }
+    
+    return self->dateCellLoader;
 }
 
 
@@ -128,22 +143,69 @@
 // 
 - (void)rightSwipe:(id)sender
 {
-    NSLog(@"Right swipe detected!");
+    NSLog(@"Right swipe detected!"); // Means we're going back in time -> remove 1 day
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+   
+    NSDateComponents *dayComponent = [[[NSDateComponents alloc] init] autorelease];
+    dayComponent.day = -1;
+    
+    NSCalendar *theCalendar = [NSCalendar currentCalendar];
+    appDelegate.dateToGetInfoFor = [theCalendar dateByAddingComponents:dayComponent toDate:appDelegate.dateToGetInfoFor options:0];
+    
+    [self refreshWithHUD];
 }
 
 - (void)leftSwipe:(id)sender
 {
-    NSLog(@"Left swipe detected!");
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+   
+    if([TimeUtilities dateIsToday:appDelegate.dateToGetInfoFor]) {
+        // Do nothing, we can't go forward in time.
+    }
+    
+    else {
+        NSDateComponents *dayComponent = [[[NSDateComponents alloc] init] autorelease];
+        dayComponent.day = 1;
+        
+        NSCalendar *theCalendar = [NSCalendar currentCalendar];
+        appDelegate.dateToGetInfoFor = [theCalendar dateByAddingComponents:dayComponent toDate:appDelegate.dateToGetInfoFor options:0];
+        
+            [self refreshWithHUD];
+    }
+    NSLog(@"Left swipe detected!"); // We're going forward in time, add a day (unless it's already today)
 }
 
+- (void) previousDayButtonTapped: (NSNotification *) notification {
+    if ([self.tabBarController.selectedViewController isEqual:self]) {
+        // If this is the currently selected controller, handle the event.
+        [self rightSwipe:notification];
+    }
+}
+
+- (void) nextDayButtonTapped: (NSNotification *) notification {
+    if ([self.tabBarController.selectedViewController isEqual:self]) {
+        // If this is the currently selected controller, handle the event.
+        [self leftSwipe:notification];
+    }    
+}
 
 // Handle incoming "edit goal" notifications
 - (void) editGoalNotificationReceived: (NSNotification *) notification {
-   
+    
     id sender = [notification.userInfo objectForKey:@"sender"];
     
     if([sender isKindOfClass:[FitbitActivityCell class]]) {
         NSLog(@"Got notification from %@ cell", [(FitbitActivityCell *) sender activityNameLabel].text);
+        
+        NSString *senderName = [(FitbitActivityCell *) sender activityNameLabel].text;
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:senderName message:@"Enter new goal:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        UITextField * alertTextField = [alert textFieldAtIndex:0];
+        alertTextField.keyboardType = UIKeyboardTypeNumberPad;
+        alertTextField.placeholder = @"";
+        [alert show];
+        [alert release];
     }
 }
 
@@ -151,6 +213,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     // Hook up the pull to refresh view.
     UITableView *tableView = (UITableView *) self.view;
@@ -161,11 +225,16 @@
     self.fitbitAuthorization = [[[FitbitAuthorization alloc] init] autorelease];
     self.fitbitAuthorization.delegate = self;
     
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    delegate.fitbitAuthorization = self->fitbitAuthorization;
+    appDelegate.fitbitAuthorization = self->fitbitAuthorization;
+    appDelegate.fitbitResources = self->fitbitResources;
     
     self.fitbitResources = [[[FitbitResources alloc] initWithAuthorizationObject:self.fitbitAuthorization] autorelease];
     self.fitbitResources.delegate = self;
+
+    // Share the Fitbit objects via the App Delegate.
+    appDelegate.fitbitAuthorization = self->fitbitAuthorization;
+    appDelegate.fitbitResources = self->fitbitResources;
+    
     
     if(self.fitbitAuthorization.isAuthorized == NO) {
         NSLog(@"Fail, authorization flow not implemented in the new view controller!");
@@ -173,15 +242,7 @@
     
     else {
         
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Loading profile";
-        hud.dimBackground = YES;
-        hud.minShowTime = 1.5;
-        hud.removeFromSuperViewOnHide = YES;
-        
-        [self.fitbitResources fetchMyUserInfo];
-        [self.fitbitResources fetchDevices];
-        [self.fitbitResources fetchMyActivitiesForDate:[NSDate date]];
+        [self refreshWithHUD]; 
         
         //[self.fitbitResources fetchActivityStats];
         //[self.fitbitResources fetchBodyFatDataFromDate:[NSDate date] untilDate:[NSDate date]];
@@ -199,7 +260,20 @@
      name:EDIT_GOAL_BUTTON_PRESSED_NOTIFICATION
      object:nil];    
     
-
+    // Subscribe to "Previous date button" notifications
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(previousDayButtonTapped:)
+     name:DATE_PREVIOUS_BUTTON_PRESSED
+     object:nil];    
+    
+    // Subscribe to "Next date button" notifications
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(nextDayButtonTapped:)
+     name:DATE_NEXT_BUTTON_PRESSED
+     object:nil];    
+    
     // Set up swipe detection.
     
     // Recognizing RIGHT swiping gestures
@@ -216,7 +290,7 @@
     
     
     // Set our image background && make sure it shows through.
-    self.parentViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"fitbit_background.png"]];
+    self.parentViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"fitbit_background2.png"]];
     [(UITableView *) self.view setSeparatorColor: [UIColor clearColor]];
     self.tableView.backgroundColor = [UIColor clearColor];
     
@@ -226,6 +300,12 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void) viewWillAppear:(BOOL)animated {
+    UITableView *tableView = (UITableView *) self.view;
+    [tableView reloadData];
+}
+
 
 - (void)viewDidUnload
 {
@@ -251,6 +331,8 @@
 {
     // Return the number of rows in the section.
     switch (section) {
+        case DATE_SELECTION_SECTION:
+            return 1;
         case PROFILE_CELL_SECTION:
             return 1;
         case ACTIVITIES_CELL_SECTION:
@@ -262,29 +344,66 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                       reuseIdentifier:@"Cell"]
-                autorelease];
-        
-        // cell.textLabel.text = [NSString stringWithFormat:@"Section: %d, row: %d", indexPath.section, indexPath.row];                
-    }
     
     
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+
     switch (indexPath.section) {
+     
+        
+        case DATE_SELECTION_SECTION: {
+            
+            DateSelectionCell *dateSelectionCell = [tableView dequeueReusableCellWithIdentifier:@"DateSelectionCell"];
+            
+            if(dateSelectionCell == nil) {
+                NSArray *topLevelItems = [self.dateCellLoader instantiateWithOwner:self options:nil];
+                dateSelectionCell = [topLevelItems objectAtIndex:0];
+            }
+            
+            dateSelectionCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            if([TimeUtilities dateIsToday:appDelegate.dateToGetInfoFor]) {
+                dateSelectionCell.dateTextLabel.text = @"Today";
+            }
+            
+            else {
+             
+                NSDateComponents *dayComponent = [[[NSDateComponents alloc] init] autorelease];
+                dayComponent.day = 1;
+                
+                NSCalendar *theCalendar = [NSCalendar currentCalendar];
+                NSDate *datePlusOneDay = [theCalendar dateByAddingComponents:dayComponent toDate:appDelegate.dateToGetInfoFor options:0];
+                
+                if([TimeUtilities dateIsToday:datePlusOneDay]) {
+                    dateSelectionCell.dateTextLabel.text = @"Yesterday";
+                }
+                
+                else {
+                    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+                    [dateFormatter setDateFormat:@"dd. MMM"];
+                    dateSelectionCell.dateTextLabel.text = [dateFormatter stringFromDate:appDelegate.dateToGetInfoFor];
+                }
+
+            }                
+                
+            
+            return dateSelectionCell;
+            
+        }
+            break;
+        
         case PROFILE_CELL_SECTION: {
             
-            // Load the FitbitProfileCell with our custom loader
+            // Load the : with our custom loader
             FitbitProfileCell *profileCell = [tableView dequeueReusableCellWithIdentifier:@"FitbitProfileCell"];
             
             if(profileCell == nil) {
                 NSArray *topLevelItems = [self.profileCellLoader instantiateWithOwner:self options:nil];
                 profileCell = [topLevelItems objectAtIndex:0];
             }
+            
+            // Set not selectable
+            profileCell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             // Set all the stuff.
             profileCell.backgroundView = [UACellBackgroundView getBackgroundCellView];
@@ -323,6 +442,9 @@
                 activityCell = [topLevelItems objectAtIndex:0];
             }
             
+            // Set not selectable
+            activityCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
             switch(indexPath.row) {
                 case 0: {
                     // Top position
@@ -330,7 +452,7 @@
                     [(UACellBackgroundView *) activityCell.backgroundView setPosition:UACellBackgroundViewPositionTop];
                     
                     // Steps
-                    activityCell.activityNameLabel.text = @"Steps";
+                    activityCell.activityNameLabel.text = STEPS_STRING;
                     activityCell.activityGoalLabel.text = [NSString stringWithFormat:@"%@ of goal %@", self.currentdailyActivity.steps, self.currentdailyActivity.goalSteps];
                     
                     activityCell.activityProgressView.progressTintColor = [self colorForScore:self.currentdailyActivity.steps ofGoal:self.currentdailyActivity.goalSteps];
@@ -346,7 +468,7 @@
                     [(UACellBackgroundView *) activityCell.backgroundView setPosition:UACellBackgroundViewPositionMiddle];
                     
                     // Floors
-                    activityCell.activityNameLabel.text = @"Floors";
+                    activityCell.activityNameLabel.text = FLOORS_STRING;
                     activityCell.activityGoalLabel.text = [NSString stringWithFormat:@"%@ of goal %@", self.currentdailyActivity.floors, self.currentdailyActivity.goalFloors];
                     
                     activityCell.activityProgressView.progressTintColor = [self colorForScore:self.currentdailyActivity.floors ofGoal:self.currentdailyActivity.goalFloors];
@@ -361,7 +483,7 @@
                     [(UACellBackgroundView *) activityCell.backgroundView setPosition:UACellBackgroundViewPositionMiddle];
                     
                     // Distance
-                    activityCell.activityNameLabel.text = @"Distance";
+                    activityCell.activityNameLabel.text = DISTANCE_STRING;
                     activityCell.activityGoalLabel.text = [NSString stringWithFormat:@"%@ km of goal %@ km", self.currentdailyActivity.distance, self.currentdailyActivity.goalDistance];
                     
                     activityCell.activityProgressView.progressTintColor = [self colorForScore:self.currentdailyActivity.distance ofGoal:self.currentdailyActivity.goalDistance];
@@ -376,7 +498,7 @@
                     [(UACellBackgroundView *) activityCell.backgroundView setPosition:UACellBackgroundViewPositionMiddle];
                     
                     // Calories
-                    activityCell.activityNameLabel.text = @"Calories out";
+                    activityCell.activityNameLabel.text = CALORIES_OUT_STRING;
                     activityCell.activityGoalLabel.text = [NSString stringWithFormat:@"%@ cal of goal %@", self.currentdailyActivity.caloriesOut, self.currentdailyActivity.goalCaloriesOut];
                     
                     activityCell.activityProgressView.progressTintColor = [self colorForScore:self.currentdailyActivity.caloriesOut ofGoal:self.currentdailyActivity.goalCaloriesOut];
@@ -391,7 +513,7 @@
                     [(UACellBackgroundView *) activityCell.backgroundView setPosition:UACellBackgroundViewPositionBottom];
                     
                     // Active Score
-                    activityCell.activityNameLabel.text = @"Active score";
+                    activityCell.activityNameLabel.text = ACTIVE_SCORE_STRING;
                     activityCell.activityGoalLabel.text = [NSString stringWithFormat:@"%@ of goal %@",self.currentdailyActivity.activeScore, self.currentdailyActivity.goalActiveScore];
                     
                     activityCell.activityProgressView.progressTintColor = [self colorForScore:self.currentdailyActivity.activeScore ofGoal:self.currentdailyActivity.goalActiveScore];
@@ -401,14 +523,23 @@
                     break;
             }
             
-            
             return activityCell;
             // These are the activities, e.g steps taken, floors climbed, distance covered, calories out, active score.
         }
     }
     
     
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    if (cell == nil) {
+        
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                       reuseIdentifier:@"Cell"]
+                autorelease];
+        
+        // cell.textLabel.text = [NSString stringWithFormat:@"Section: %d, row: %d", indexPath.section, indexPath.row];                
+    }
     // Configure the cell...
     
     return cell;
@@ -485,8 +616,8 @@
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
     
-    if(path.section == PROFILE_CELL_SECTION || path.section == ACTIVITIES_CELL_SECTION) {
-        // We don't want the profile cell / activity cells to be selectable.        
+    if(path.section == DATE_SELECTION_SECTION || path.section == PROFILE_CELL_SECTION || path.section == ACTIVITIES_CELL_SECTION) {
+        // We don't want the date cell / profile cell / activity cells to be selectable.        
         return nil;
     }
     
@@ -648,6 +779,9 @@
 #pragma mark - SSPullToRefreshView helper methods
 
 - (void)refresh {
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+
     [self.pullToRefreshView startLoading];
     
     self.currentdailyActivity = nil;
@@ -656,9 +790,20 @@
     
     [self.fitbitResources fetchDevices];
     [self.fitbitResources fetchMyUserInfo];
-    [self.fitbitResources fetchMyActivitiesForDate:[NSDate date]];
+    [self.fitbitResources fetchMyActivitiesForDate:appDelegate.dateToGetInfoFor];
     
-   // [self.pullToRefreshView finishLoading];
+    // [self.pullToRefreshView finishLoading];
+}
+
+- (void) refreshWithHUD {
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading profile";
+    hud.dimBackground = YES;
+    hud.minShowTime = 1.5;
+    hud.removeFromSuperViewOnHide = YES;
+    
+    [self refresh];
 }
 
 #pragma mark - SSPullToRefreshViewDelegate
@@ -697,6 +842,50 @@
     return self.lastRefreshDate;
 }
 
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 0) {
+        // CANCEL -> do nothing
+    }
+    
+    else if(buttonIndex == 1) {
+        // OK tapped, change goal.
+        UITextField * alertTextField = [alertView textFieldAtIndex:0];
+        NSString *alertTextFieldText = [alertTextField text];
+        
+        if([alertView.title isEqualToString:STEPS_STRING]) {
+            self.currentdailyActivity.goalSteps = [NSNumber numberWithInteger:[alertTextFieldText integerValue]];
+        }
+        
+        else if([alertView.title isEqualToString:FLOORS_STRING]) {
+            self.currentdailyActivity.goalFloors = [NSNumber numberWithInteger:[alertTextFieldText integerValue]];            
+        }
+        
+        else if([alertView.title isEqualToString:DISTANCE_STRING]) {
+            self.currentdailyActivity.goalDistance = [NSNumber numberWithInteger:[alertTextFieldText integerValue]];            
+        }
+        
+        else if([alertView.title isEqualToString:CALORIES_OUT_STRING]) {
+            self.currentdailyActivity.goalCaloriesOut = [NSNumber numberWithInteger:[alertTextFieldText integerValue]];
+        }
+        
+        else if([alertView.title isEqualToString:ACTIVE_SCORE_STRING]) {
+            self.currentdailyActivity.goalActiveScore = [NSNumber numberWithInteger:[alertTextFieldText integerValue]];
+        }
+        
+        else {
+            return;
+        }
+        
+    UITableView *tableView = (UITableView *) self.view;
+    [tableView reloadData];
+    
+    }
+    
+}
 
 
 
