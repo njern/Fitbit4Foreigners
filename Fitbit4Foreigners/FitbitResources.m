@@ -38,7 +38,7 @@
 
 - (id) initWithAuthorizationObject: (FitbitAuthorization *) _authorization {
     
-    if(self == [super init]) {
+    if(self = [super init]) {
         self.authorization = _authorization;
         self.datesForDailyActivities = [NSMutableDictionary dictionary];
     

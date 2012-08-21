@@ -83,7 +83,8 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+     
+        
     }
     return self;
 }
@@ -225,9 +226,6 @@
     self.fitbitAuthorization = [[[FitbitAuthorization alloc] init] autorelease];
     self.fitbitAuthorization.delegate = self;
     
-    appDelegate.fitbitAuthorization = self->fitbitAuthorization;
-    appDelegate.fitbitResources = self->fitbitResources;
-    
     self.fitbitResources = [[[FitbitResources alloc] initWithAuthorizationObject:self.fitbitAuthorization] autorelease];
     self.fitbitResources.delegate = self;
 
@@ -237,7 +235,7 @@
     
     
     if(self.fitbitAuthorization.isAuthorized == NO) {
-        NSLog(@"Fail, authorization flow not implemented in the new view controller!");
+        [self.fitbitAuthorization fetchAuthorizationURL];
     }
     
     else {
@@ -640,9 +638,9 @@
 	// headerLabel.frame = CGRectMake(150.0, 0.0, 300.0, 44.0);
     
 	headerLabel.text = text;
-	[customView addSubview:headerLabel];
+	[customView addSubview: [headerLabel autorelease]];
     
-	return customView;
+	return [customView autorelease];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -731,7 +729,6 @@
     }
 }
 
-
 #pragma mark - FitbitAuthorizationDelegate
 
 - (void) gotAuthorizationURL: (NSURL *) url {
@@ -746,8 +743,7 @@
 - (void) successfullyFetchedAuthorizedToken {
     
     NSLog(@"Successfully fetched the authorized token.");
-    // DO STUFF
-    
+    [self refreshWithHUD];
 }
 - (void) failedToFetchAuthorizedToken: (NSError *) error {
     NSLog(@"Error getting authorized oAuth token: %@", [error localizedDescription]);

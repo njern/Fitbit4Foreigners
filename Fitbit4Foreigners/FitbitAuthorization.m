@@ -49,7 +49,7 @@
 
 - (id) init {
     
-    if(self == [super init]) {
+    if(self = [super init]) {
         self->accessToken = [[FitbitAuthorization loadAuthorizedKeysFromDisk] retain];
     }
     

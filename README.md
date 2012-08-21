@@ -8,6 +8,13 @@
 
 Open the project in XCode, build it to your device.
 
+# Getting started
+
+Right now the application throws you straight into Mobile Safari to authenticate with Fitbit if you haven't done so already. In the future I am sure there'll be a fancy login screen but for now you will have to make do. 
+
+*Hint*: I will also accept pull requests that "fixes" 
+this flow :)
+
 # Architecture
 
 * Authentication happens via oAuth (if you want to use your own API keys, switch them out in *FitbitAuthorization.h* )
