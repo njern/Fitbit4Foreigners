@@ -1,8 +1,8 @@
 # README
 
-**Fitbit has seen fit not distribute their [iOS client](http://itunes.apple.com/us/app/fitbit-activity-calorie-tracker/id462638897?mt=8) ) in Scandinavia nor many other countries so I wrote up a client using their API that aims to do most of the same things their client already does.**
+Fitbit has seen fit not distribute their [iOS client](http://itunes.apple.com/us/app/fitbit-activity-calorie-tracker/id462638897?mt=8) in Scandinavia nor many other countries so I wrote up a client using their API that aims to do most of the same things their client already does.
 
-**It's not very pretty but it does the job well enough.**
+It's severely lacking in both design and functionality so far, but as one of my pet projects you can expect semi-irregular updates (possibly).
 
 # Installation
 
