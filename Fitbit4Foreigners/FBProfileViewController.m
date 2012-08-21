@@ -290,7 +290,7 @@
     
     
     // Set our image background && make sure it shows through.
-    self.parentViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"fitbit_background2.png"]];
+    self.parentViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dark_metal_grid.png.png"]];
     [(UITableView *) self.view setSeparatorColor: [UIColor clearColor]];
     self.tableView.backgroundColor = [UIColor clearColor];
     
@@ -612,6 +612,45 @@
     
     else return @"";
 }
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    NSString *text = @"";
+    
+    if(section == PROFILE_CELL_SECTION) {
+        text = @"Profile";
+    }
+    
+    else if(section == ACTIVITIES_CELL_SECTION) {
+        text =  @"Daily activities";
+    }
+    
+	// create the parent view that will hold header Label
+	UIView* customView = [[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, 300.0, 44.0)];
+	
+	// create the button object
+	UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+	headerLabel.backgroundColor = [UIColor clearColor];
+	headerLabel.opaque = NO;
+	headerLabel.textColor = [UIColor whiteColor];
+	headerLabel.highlightedTextColor = [UIColor whiteColor];
+	headerLabel.font = [UIFont boldSystemFontOfSize:20];
+	headerLabel.frame = CGRectMake(10.0, 0.0, 300.0, 44.0);
+    
+	// If you want to align the header text as centered
+	// headerLabel.frame = CGRectMake(150.0, 0.0, 300.0, 44.0);
+    
+	headerLabel.text = text;
+	[customView addSubview:headerLabel];
+    
+	return customView;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+	return 44.0;
+}
+
+
 
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {

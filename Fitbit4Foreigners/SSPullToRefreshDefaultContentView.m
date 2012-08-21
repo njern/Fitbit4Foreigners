@@ -23,7 +23,7 @@
 		_statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 14.0f, width, 20.0f)];
 		_statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		_statusLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-		_statusLabel.textColor = [UIColor blackColor];
+		_statusLabel.textColor = [UIColor whiteColor];
 		_statusLabel.backgroundColor = [UIColor clearColor];
 		_statusLabel.textAlignment = UITextAlignmentCenter;
 		[self addSubview:_statusLabel];

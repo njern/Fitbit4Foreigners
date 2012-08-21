@@ -193,7 +193,7 @@
     
     
     // Set our image background && make sure it shows through.
-    self.parentViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"fitbit_background2.png"]];
+    self.parentViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dark_metal_grid.png"]];
     [(UITableView *) self.view setSeparatorColor: [UIColor clearColor]];
     self.tableView.backgroundColor = [UIColor clearColor];
     
